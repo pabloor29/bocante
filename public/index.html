@@ -1,43 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="theme-color" content="#3D7A5A" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <!-- SEO Primary -->
+    <title>Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue | Cuisine maison en bocaux</title>
+    <meta name="description" content="Bocante, restaurant du midi à L'Isle-sur-la-Sorgue : cuisine 100% maison, produits frais et de saison servis en bocaux. Sur place ou à emporter. Ouvert du mardi au samedi, 11h30–14h30." />
+    <meta name="keywords" content="restaurant L'Isle-sur-la-Sorgue, restaurant midi Vaucluse, déjeuner Isle-sur-la-Sorgue, cuisine maison, produits frais, à emporter, bocaux, restaurant Provence, cuisine de saison" />
+    <meta name="author" content="Bocante" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://bocante.fr/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content="https://bocante.fr/" />
+    <meta property="og:title" content="Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue" />
+    <meta property="og:description" content="Cuisine 100% maison, produits frais et de saison, servis en bocaux. Sur place ou à emporter à L'Isle-sur-la-Sorgue." />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Bocante" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue" />
+    <meta name="twitter:description" content="Cuisine 100% maison, produits frais et de saison, servis en bocaux. Sur place ou à emporter." />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org – Restaurant -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Bocante",
+      "description": "Restaurant du midi à L'Isle-sur-la-Sorgue proposant une cuisine 100% maison à base de produits frais et de saison, servis en bocaux. Sur place ou à emporter.",
+      "url": "https://bocante.fr",
+      "telephone": "+33490000000",
+      "email": "contact@bocante.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12 Rue de la République",
+        "addressLocality": "L'Isle-sur-la-Sorgue",
+        "postalCode": "84800",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.9196,
+        "longitude": 5.0496
+      },
+      "servesCuisine": ["Française", "Provençale", "Cuisine du marché"],
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "11:30",
+          "closes": "14:30"
+        }
+      ],
+      "menu": "https://bocante.fr/menu",
+      "hasMenu": "https://bocante.fr/menu",
+      "takeout": true,
+      "dineIn": true
+    }
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Vous devez activer JavaScript pour utiliser ce site.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

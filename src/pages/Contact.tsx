@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { getOpeningHours, DAYS_FR, DayHours } from '../lib/opening-hours';
 
 interface ContactForm {
   nom: string;
@@ -29,20 +30,15 @@ const contactItems = [
   },
 ];
 
-const hours = [
-  { day: 'Lundi',    time: null },
-  { day: 'Mardi',    time: '11h30 – 14h30' },
-  { day: 'Mercredi', time: '11h30 – 14h30' },
-  { day: 'Jeudi',    time: '11h30 – 14h30' },
-  { day: 'Vendredi', time: '11h30 – 14h30' },
-  { day: 'Samedi',   time: '11h30 – 14h30' },
-  { day: 'Dimanche', time: null },
-];
-
 export default function Contact() {
   const [form, setForm] = useState<ContactForm>({ nom: '', email: '', sujet: '', message: '' });
+  const [hours, setHours] = useState<DayHours[] | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getOpeningHours().then(setHours);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -110,18 +106,32 @@ export default function Contact() {
 
               {/* Hours */}
               <h3 className="font-heading text-lg font-semibold text-gray-900 mb-4">Horaires d'ouverture</h3>
-              <ul className="space-y-0">
-                {hours.map(({ day, time }) => (
-                  <li key={day}
-                      className="flex justify-between py-2.5 border-b border-parchment-300 last:border-0 text-sm">
-                    <span className="text-gray-500">{day}</span>
-                    {time
-                      ? <span className="font-semibold text-forest-700">{time}</span>
-                      : <span className="text-gray-300 italic">Fermé</span>
-                    }
-                  </li>
-                ))}
-              </ul>
+              {hours ? (
+                <ul className="space-y-0">
+                  {DAYS_FR.map((day, i) => {
+                    const d = hours[i];
+                    return (
+                      <li key={day} className="flex justify-between py-2.5 border-b border-parchment-300 last:border-0 text-sm">
+                        <span className="text-gray-500">{day}</span>
+                        {d.closedDay ? (
+                          <span className="text-gray-300 italic">Fermé</span>
+                        ) : (
+                          <div className="flex flex-col items-end">
+                            {!d.closedLunch && d.midi.debut && (
+                              <span className="font-semibold text-forest-700">{d.midi.debut} – {d.midi.fin}</span>
+                            )}
+                            {!d.closedDiner && d.soir.debut && (
+                              <span className="font-semibold text-forest-700">{d.soir.debut} – {d.soir.fin}</span>
+                            )}
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <p className="text-sm text-gray-400 italic">Chargement des horaires…</p>
+              )}
             </div>
 
             {/* Map placeholder */}

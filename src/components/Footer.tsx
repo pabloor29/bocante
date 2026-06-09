@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getOpeningHours, DAYS_FR, DayHours } from '../lib/opening-hours';
 
 const pages = [
   { to: '/',            label: 'Accueil' },
@@ -10,17 +11,13 @@ const pages = [
   { to: '/contact',     label: 'Contact' },
 ];
 
-const hours = [
-  { day: 'Lundi',    time: null },
-  { day: 'Mardi',    time: '11h30 – 14h30' },
-  { day: 'Mercredi', time: '11h30 – 14h30' },
-  { day: 'Jeudi',    time: '11h30 – 14h30' },
-  { day: 'Vendredi', time: '11h30 – 14h30' },
-  { day: 'Samedi',   time: '11h30 – 14h30' },
-  { day: 'Dimanche', time: null },
-];
-
 export default function Footer() {
+  const [hours, setHours] = useState<DayHours[] | null>(null);
+
+  useEffect(() => {
+    getOpeningHours().then(setHours);
+  }, []);
+
   return (
     <footer className="bg-forest-900 text-white/75 pt-16 pb-8">
       <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,17 +50,32 @@ export default function Footer() {
           {/* Horaires */}
           <div>
             <p className="text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-golden-500 mb-5">Horaires</p>
-            <ul className="space-y-2">
-              {hours.map(({ day, time }) => (
-                <li key={day} className="flex justify-between text-sm gap-4">
-                  <span className="text-white/45">{day}</span>
-                  {time
-                    ? <span className="text-white/80 font-medium">{time}</span>
-                    : <span className="text-white/30 italic">Fermé</span>
-                  }
-                </li>
-              ))}
-            </ul>
+            {hours ? (
+              <ul className="space-y-2">
+                {DAYS_FR.map((day, i) => {
+                  const d = hours[i];
+                  return (
+                    <li key={day} className="flex justify-between text-sm gap-4">
+                      <span className="text-white/45">{day}</span>
+                      {d.closedDay ? (
+                        <span className="text-white/30 italic">Fermé</span>
+                      ) : (
+                        <div className="flex flex-col items-end">
+                          {!d.closedLunch && d.midi.debut && (
+                            <span className="text-white/80 font-medium">{d.midi.debut} – {d.midi.fin}</span>
+                          )}
+                          {!d.closedDiner && d.soir.debut && (
+                            <span className="text-white/80 font-medium">{d.soir.debut} – {d.soir.fin}</span>
+                          )}
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="text-sm text-white/30 italic">Chargement…</p>
+            )}
           </div>
 
           {/* Contact */}

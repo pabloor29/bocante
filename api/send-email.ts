@@ -1,44 +1,55 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { Resend } from 'resend';
 
-// Avast intercepte le trafic HTTPS en local — désactivé uniquement hors production
-if (process.env.VERCEL_ENV !== 'production') {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-}
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-const EMAILJS_SERVICE = 'service_pablo_001';
-const EMAILJS_PUBLIC_KEY = 'Hj5zsN3OJSMAXQ9TV';
-const EMAILJS_PRIVATE_KEY = 'wln8b5Ha4DXyufsb0FGjJ';
-
-async function sendTemplate(templateId: string, templateParams: Record<string, string>) {
-  const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      service_id: EMAILJS_SERVICE,
-      template_id: templateId,
-      user_id: EMAILJS_PUBLIC_KEY,
-      accessToken: EMAILJS_PRIVATE_KEY,
-      template_params: templateParams,
-    }),
-  });
-  if (!res.ok) throw new Error(await res.text());
-}
+const FROM = 'Bocante <onboarding@resend.dev>';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const params: Record<string, string> = req.body;
+  const p = req.body as Record<string, string>;
+
+  const restaurantHtml = `
+    <h2>Nouvelle demande de réservation</h2>
+    <p><strong>Nom :</strong> ${p.prenom} ${p.nom}</p>
+    <p><strong>Email :</strong> ${p.email}</p>
+    <p><strong>Téléphone :</strong> ${p.telephone || '—'}</p>
+    <p><strong>Date :</strong> ${p.eventDate}</p>
+    <p><strong>Heure :</strong> ${p.heure}</p>
+    <p><strong>Couverts :</strong> ${p.couverts}</p>
+    <p><strong>Message :</strong> ${p.message || '—'}</p>
+  `;
+
+  const clientHtml = `
+    <h2>Demande de réservation reçue</h2>
+    <p>Bonjour ${p.prenom},</p>
+    <p>Nous avons bien reçu votre demande de réservation pour <strong>${p.couverts} personne${Number(p.couverts) > 1 ? 's' : ''}</strong> le <strong>${p.eventDate}</strong> à <strong>${p.heure}</strong>.</p>
+    <p>${p.reservationComment}</p>
+    <p>À très bientôt,<br/>L'équipe Bocante</p>
+  `;
 
   try {
     await Promise.all([
-      sendTemplate('template_resa_001', params),
-      sendTemplate('template_resa_002', params),
+      resend.emails.send({
+        from: FROM,
+        to: p.emailCompany,
+        subject: `Réservation – ${p.prenom} ${p.nom} – ${p.eventDate}`,
+        html: restaurantHtml,
+      }),
+      resend.emails.send({
+        from: FROM,
+        to: p.email,
+        subject: 'Votre demande de réservation chez Bocante',
+        html: clientHtml,
+      }),
     ]);
+
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error('EmailJS error:', error);
-    return res.status(500).json({ error: 'Échec de l\'envoi' });
+    console.error('Resend error:', error);
+    return res.status(500).json({ error: "Échec de l'envoi" });
   }
 }

@@ -1,19 +1,37 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Resend } from 'resend';
+import https from 'https';
 
-// Avast intercepte le trafic HTTPS en local — désactivé uniquement hors production
-if (process.env.VERCEL_ENV !== 'production') {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+const IS_PROD = process.env.VERCEL_ENV === 'production';
+
+function resendSend(payload: object): Promise<{ status: number; body: string }> {
+  return new Promise((resolve, reject) => {
+    const data = JSON.stringify(payload);
+    const req = https.request(
+      {
+        hostname: 'api.resend.com',
+        path: '/emails',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Length': Buffer.byteLength(data),
+        },
+        rejectUnauthorized: IS_PROD,
+      },
+      (res) => {
+        let body = '';
+        res.on('data', (chunk) => (body += chunk));
+        res.on('end', () => resolve({ status: res.statusCode ?? 0, body }));
+      }
+    );
+    req.on('error', reject);
+    req.write(data);
+    req.end();
+  });
 }
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-const FROM = 'Bocante <onboarding@resend.dev>';
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const p = req.body as Record<string, string>;
 
@@ -37,24 +55,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   `;
 
   try {
-    await Promise.all([
-      resend.emails.send({
-        from: FROM,
+    const [r1, r2] = await Promise.all([
+      resendSend({
+        from: 'Bocante <onboarding@resend.dev>',
         to: p.emailCompany,
         subject: `Réservation – ${p.prenom} ${p.nom} – ${p.eventDate}`,
         html: restaurantHtml,
       }),
-      resend.emails.send({
-        from: FROM,
+      resendSend({
+        from: 'Bocante <onboarding@resend.dev>',
         to: p.email,
         subject: 'Votre demande de réservation chez Bocante',
         html: clientHtml,
       }),
     ]);
 
+    if (r1.status >= 400 || r2.status >= 400) {
+      console.error('Resend error r1:', r1.body, 'r2:', r2.body);
+      return res.status(500).json({ error: 'Resend error', r1: r1.body, r2: r2.body });
+    }
+
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Resend error:', error);
-    return res.status(500).json({ error: "Échec de l'envoi" });
+    console.error('Send error:', error);
+    return res.status(500).json({ error: String(error) });
   }
 }

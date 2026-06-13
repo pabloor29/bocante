@@ -3,11 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { fr } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
-import emailjs from '@emailjs/browser';
 import { getReservationConfig, ReservationConfig } from '../lib/reservation';
-
-const EMAILJS_SERVICE = 'service_pablo_001';
-const EMAILJS_PUBLIC_KEY = 'Hj5zsN3OJSMAXQ9TV';
 
 registerLocale('fr', fr);
 
@@ -120,7 +116,7 @@ export default function Reservation() {
       company: 'Bocante',
       emailCompany: 'pab.ortg@gmail.com',
       reservationType: 'EN ATTENTE DE CONFIRMATION',
-      reservationComment: 'Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Veuillez noter que votre réservation ne sera confirmée qu\'une fois que vous aurez reçu un mail de confirmation de notre part. Nous vous remercions pour votre patience et sommes impatients de vous accueillir !',
+      reservationComment: "Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Veuillez noter que votre réservation ne sera confirmée qu'une fois que vous aurez reçu un mail de confirmation de notre part. Nous vous remercions pour votre patience et sommes impatients de vous accueillir !",
       reservationComment2: ' ',
       prenom: form.prenom,
       nom: form.nom,
@@ -134,18 +130,19 @@ export default function Reservation() {
 
     setLoading(true);
 
-    Promise.all([
-      emailjs.send(EMAILJS_SERVICE, 'template_resa_001', templateParams, EMAILJS_PUBLIC_KEY),
-      emailjs.send(EMAILJS_SERVICE, 'template_resa_002', templateParams, EMAILJS_PUBLIC_KEY),
-    ])
-      .then(() => {
+    fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(templateParams),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Échec envoi');
         setSubmitted(true);
-        setLoading(false);
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi des emails :", error);
-        setLoading(false);
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   const timeSlots = config?.timeSlots ?? FALLBACK_HOURS;

@@ -1,6 +1,11 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resend } from 'resend';
 
+// Avast intercepte le trafic HTTPS en local — désactivé uniquement hors production
+if (process.env.VERCEL_ENV !== 'production') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+}
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM = 'Bocante <onboarding@resend.dev>';

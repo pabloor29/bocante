@@ -403,6 +403,37 @@ export default function Reservation() {
                       Vous recevrez une confirmation par e-mail. Annulation libre jusqu'à 24h avant.
                     </p>
                   </form>
+
+                  {process.env.NODE_ENV === 'development' && (
+                    <button
+                      onClick={() =>
+                        fetch('/api/send-email', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            company: 'Bocante',
+                            emailCompany: 'pab.ortg@gmail.com',
+                            prenom: 'Test',
+                            nom: 'Bouton',
+                            email: 'pab.ortg@gmail.com',
+                            telephone: '0600000000',
+                            couverts: '2',
+                            heure: '12:30',
+                            message: 'Test depuis bouton',
+                            eventDate: 'vendredi 13 juin 2026',
+                            reservationComment: 'Ceci est un test.',
+                            reservationComment2: ' ',
+                          }),
+                        })
+                          .then((r) => r.json())
+                          .then((d) => alert(JSON.stringify(d)))
+                          .catch((e) => alert('Erreur : ' + e.message))
+                      }
+                      className="mt-4 w-full py-2 text-xs bg-amber-400 hover:bg-amber-500 text-white rounded-full font-semibold"
+                    >
+                      [DEV] Envoyer un mail de test
+                    </button>
+                  )}
                 </>
               )}
             </div>

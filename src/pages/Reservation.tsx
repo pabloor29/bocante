@@ -115,20 +115,28 @@ export default function Reservation() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!selectedDate || !formRef.current) return;
+
+    if (!formRef.current) {
+      console.error("Le formulaire n'est pas disponible !");
+      return;
+    }
+
+    const formElement = formRef.current;
     setLoading(true);
+
     Promise.all([
-      emailjs.sendForm(EMAILJS_SERVICE, 'template_resa_001', formRef.current, EMAILJS_PUBLIC_KEY),
-      emailjs.sendForm(EMAILJS_SERVICE, 'template_resa_002', formRef.current, EMAILJS_PUBLIC_KEY),
+      emailjs.sendForm(EMAILJS_SERVICE, 'template_resa_001', formElement, EMAILJS_PUBLIC_KEY),
+      emailjs.sendForm(EMAILJS_SERVICE, 'template_resa_002', formElement, EMAILJS_PUBLIC_KEY),
     ])
       .then(() => {
         formRef.current?.reset();
         setSubmitted(true);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi des emails :", error);
-      })
-      .finally(() => setLoading(false));
+        setLoading(false);
+      });
   };
 
   const timeSlots = config?.timeSlots ?? FALLBACK_HOURS;

@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "./supabase";
 import { DayHours } from "./opening-hours";
 
 export type ReservationConfig = {
@@ -39,11 +39,6 @@ function generateSlots(debut: string, fin: string, step = 30): string[] {
   }
   return slots;
 }
-
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL!,
-  process.env.REACT_APP_SUPABASE_ANON_KEY!
-);
 
 export async function getReservationConfig(): Promise<ReservationConfig> {
   const restaurantId = process.env.REACT_APP_RESTAURANT_ID!;

@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "./supabase";
 
 export type DayHours = {
   midi: { debut: string; fin: string };
@@ -17,11 +17,6 @@ export const DAYS_FR = [
   "Samedi",
   "Dimanche",
 ];
-
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL!,
-  process.env.REACT_APP_SUPABASE_ANON_KEY!
-);
 
 export async function getOpeningHours(): Promise<DayHours[] | null> {
   console.log("[opening-hours] URL:", process.env.REACT_APP_SUPABASE_URL);

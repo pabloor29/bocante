@@ -1,5 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
+// Avast intercepte le trafic HTTPS en local — désactivé uniquement hors production
+if (process.env.VERCEL_ENV !== 'production') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+}
+
 const EMAILJS_SERVICE = 'service_pablo_001';
 const EMAILJS_PUBLIC_KEY = 'Hj5zsN3OJSMAXQ9TV';
 const EMAILJS_PRIVATE_KEY = 'wln8b5Ha4DXyufsb0FGjJ';

@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "./supabase";
 
 export type MenuFile = {
   id: string;
@@ -12,11 +12,6 @@ export type MenuCategory = {
   position: number;
   files: MenuFile[];
 };
-
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL!,
-  process.env.REACT_APP_SUPABASE_ANON_KEY!
-);
 
 export async function getMenuData(): Promise<MenuCategory[]> {
   const restaurantId = process.env.REACT_APP_RESTAURANT_ID!;

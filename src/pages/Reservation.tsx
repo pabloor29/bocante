@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, forwardRef } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { fr } from 'date-fns/locale';
@@ -78,7 +78,6 @@ const infoCards = [
 ];
 
 export default function Reservation() {
-  const formRef = useRef<HTMLFormElement>(null);
   const [form, setForm] = useState<FormData>({
     prenom: '', nom: '', email: '', telephone: '',
     heure: '12:30', couverts: '2', message: '',
@@ -115,21 +114,31 @@ export default function Reservation() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!selectedDate) return;
 
-    if (!formRef.current) {
-      console.error("Le formulaire n'est pas disponible !");
-      return;
-    }
+    const templateParams = {
+      company: 'Bocante',
+      emailCompany: 'pab.ortg@gmail.com',
+      reservationType: 'EN ATTENTE DE CONFIRMATION',
+      reservationComment: 'Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Veuillez noter que votre réservation ne sera confirmée qu\'une fois que vous aurez reçu un mail de confirmation de notre part. Nous vous remercions pour votre patience et sommes impatients de vous accueillir !',
+      reservationComment2: ' ',
+      prenom: form.prenom,
+      nom: form.nom,
+      email: form.email,
+      telephone: form.telephone,
+      couverts: form.couverts,
+      heure: form.heure,
+      message: form.message,
+      eventDate: selectedDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
+    };
 
-    const formElement = formRef.current;
     setLoading(true);
 
     Promise.all([
-      emailjs.sendForm(EMAILJS_SERVICE, 'template_resa_001', formElement, EMAILJS_PUBLIC_KEY),
-      emailjs.sendForm(EMAILJS_SERVICE, 'template_resa_002', formElement, EMAILJS_PUBLIC_KEY),
+      emailjs.send(EMAILJS_SERVICE, 'template_resa_001', templateParams, EMAILJS_PUBLIC_KEY),
+      emailjs.send(EMAILJS_SERVICE, 'template_resa_002', templateParams, EMAILJS_PUBLIC_KEY),
     ])
       .then(() => {
-        formRef.current?.reset();
         setSubmitted(true);
         setLoading(false);
       })
@@ -288,13 +297,7 @@ export default function Reservation() {
                   <h2 className="font-heading text-xl font-semibold text-gray-900 mb-6">
                     Demande de réservation
                   </h2>
-                  <form ref={formRef} onSubmit={handleSubmit} noValidate>
-                    {/* Champs cachés pour les templates EmailJS */}
-                    <input type="hidden" name="company" value="Bocante" />
-                    <input type="hidden" name="emailCompany" value="pab.ortg@gmail.com" />
-                    <input type="hidden" name="reservationType" value="EN ATTENTE DE CONFIRMATION" />
-                    <input type="hidden" name="reservationComment" value="Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Veuillez noter que votre réservation ne sera confirmée qu'une fois que vous aurez reçu un mail de confirmation de notre part. Nous vous remercions pour votre patience et sommes impatients de vous accueillir !" />
-                    <input type="hidden" name="reservationComment2" value=" " />
+                  <form onSubmit={handleSubmit} noValidate>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                       <div>
                         <label htmlFor="prenom" className="form-label">
@@ -364,12 +367,6 @@ export default function Reservation() {
                           placeholderText="Choisir une date"
                           required
                           customInput={<DateInput />}
-                        />
-                        {/* Champ caché transmis au template emailjs */}
-                        <input
-                          type="hidden"
-                          name="eventDate"
-                          value={selectedDate ? selectedDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : ''}
                         />
                       </div>
 

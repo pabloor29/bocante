@@ -98,6 +98,14 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.78rem] text-white/30">
           <p>© {new Date().getFullYear()} Bocante · L'Isle-sur-la-Sorgue</p>
+          <a
+            href="https://portfolio-pablo-teal.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white/60 transition-colors duration-200"
+          >
+            Site réalisé par Pablo Ortega
+          </a>
           <div className="flex gap-6">
             <span className="hover:text-white/60 cursor-pointer transition-colors">Mentions légales</span>
             <span className="hover:text-white/60 cursor-pointer transition-colors">Politique de confidentialité</span>

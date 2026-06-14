@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { getOpeningHours, DAYS_FR, DayHours } from '../lib/opening-hours';
 
 const features = [
   {
@@ -21,33 +22,34 @@ const features = [
 ];
 
 const menuPreview = [
-  {
-    emoji: '🥗',
-    tag: 'Entrée',
-    tagClass: 'bg-forest-100 text-forest-700',
-    bg: 'from-forest-100 to-green-100',
-    name: 'Gaspacho de tomates cerises',
-    desc: 'Basilic frais, huile d\'olive vierge extra et pignons grillés',
-  },
-  {
-    emoji: '🍲',
-    tag: 'Plat',
-    tagClass: 'bg-golden-100 text-golden-700',
-    bg: 'from-golden-100 to-amber-100',
-    name: 'Poulet fermier rôti aux herbes',
-    desc: 'Gratin dauphinois maison et haricots verts du marché',
-  },
-  {
-    emoji: '🍮',
-    tag: 'Dessert',
-    tagClass: 'bg-rose-50 text-rose-600',
-    bg: 'from-rose-50 to-orange-50',
-    name: 'Crème brûlée à la lavande',
-    desc: 'Tuile sablée au sésame et fleur de sel de Camargue',
-  },
+  { img: '/img/plat-002.webp', imgAlt: 'Entrée du jour',   tag: 'Entrée',  tagClass: 'bg-forest-100 text-forest-700' },
+  { img: '/img/plat-001.webp', imgAlt: 'Plat du jour',     tag: 'Plat',    tagClass: 'bg-golden-100 text-golden-700' },
+  { img: '/img/plat-003.webp', imgAlt: 'Dessert du jour',  tag: 'Dessert', tagClass: 'bg-rose-50 text-rose-600'      },
 ];
 
+function heroSchedule(hours: DayHours[]): { days: string; time: string } {
+  const openIndices = hours.map((h, i) => (!h.closedDay ? i : -1)).filter(i => i >= 0);
+  const days =
+    openIndices.length === 0 ? 'Fermé'
+    : openIndices.length === 1 ? DAYS_FR[openIndices[0]]
+    : `${DAYS_FR[openIndices[0]]} – ${DAYS_FR[openIndices[openIndices.length - 1]]}`;
+
+  const firstOpen = hours.find(h => !h.closedDay && !h.closedLunch && h.midi?.debut);
+  const fmt = (t: string) => t.replace(':', 'h');
+  const time = firstOpen ? `${fmt(firstOpen.midi.debut)} – ${fmt(firstOpen.midi.fin)}` : '';
+
+  return { days, time };
+}
+
 export default function Accueil() {
+  const [schedule, setSchedule] = useState<{ days: string; time: string } | null>(null);
+
+  useEffect(() => {
+    getOpeningHours().then(h => {
+      if (h) setSchedule(heroSchedule(h));
+    });
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -57,7 +59,14 @@ export default function Accueil() {
       </Helmet>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden hero-bg hero-texture">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <img
+          src="/img/plat-001.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-900/75 via-forest-900/60 to-forest-900/80" />
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 text-golden-500 text-[0.72rem] font-semibold tracking-[0.22em] uppercase mb-8 px-4 py-2 border border-golden-500/30 rounded-full bg-golden-500/[0.08]">
@@ -76,10 +85,14 @@ export default function Accueil() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 mb-10 text-sm text-white/55">
             <span className="flex items-center gap-1.5">📍 L'Isle-sur-la-Sorgue</span>
-            <span className="text-white/20">|</span>
-            <span className="flex items-center gap-1.5">🕐 11h30 – 14h30</span>
-            <span className="text-white/20">|</span>
-            <span className="flex items-center gap-1.5">📅 Mardi – Samedi</span>
+            {schedule && (
+              <>
+                <span className="text-white/20">|</span>
+                <span className="flex items-center gap-1.5">🕐 {schedule.time}</span>
+                <span className="text-white/20">|</span>
+                <span className="flex items-center gap-1.5">📅 {schedule.days}</span>
+              </>
+            )}
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center">
@@ -88,11 +101,6 @@ export default function Accueil() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 scroll-indicator">
-          <span className="text-[0.65rem] tracking-[0.16em] uppercase">Découvrir</span>
-          <div className="w-px h-10 bg-gradient-to-b from-white/40 to-transparent" />
-        </div>
       </section>
 
       {/* FEATURES */}
@@ -135,17 +143,13 @@ export default function Accueil() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {menuPreview.map(({ emoji, tag, tagClass, bg, name, desc }) => (
-              <article key={name} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                <div className={`h-44 flex items-center justify-center text-5xl bg-gradient-to-br ${bg}`}>
-                  <span role="img" aria-hidden="true">{emoji}</span>
-                </div>
-                <div className="p-6">
-                  <span className={`inline-block text-[0.68rem] font-semibold tracking-[0.1em] uppercase px-2.5 py-0.5 rounded-full mb-2 ${tagClass}`}>
+            {menuPreview.map(({ img, imgAlt, tag, tagClass }) => (
+              <article key={tag} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                <div className="relative h-56 overflow-hidden">
+                  <img src={img} alt={imgAlt} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                  <span className={`absolute top-3 left-3 text-[0.68rem] font-semibold tracking-[0.1em] uppercase px-2.5 py-1 rounded-full ${tagClass}`}>
                     {tag}
                   </span>
-                  <h3 className="font-heading text-base font-semibold text-gray-900 mb-1.5">{name}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
                 </div>
               </article>
             ))}
@@ -182,17 +186,21 @@ export default function Accueil() {
               </Link>
             </div>
 
-            <div className="flex flex-col items-center gap-5 order-first lg:order-last">
-              <div className="text-[7rem] filter drop-shadow-2xl leading-none" role="img" aria-label="Bocaux de cuisine maison">
-                🫙
-              </div>
-              <div className="flex flex-wrap justify-center gap-3">
-                {['Artisanal', 'Local', 'De saison', '100% maison'].map(badge => (
-                  <span key={badge}
-                        className="px-4 py-1.5 text-sm bg-white/[0.07] border border-white/10 rounded-full text-white/70">
-                    {badge}
-                  </span>
-                ))}
+            <div className="order-first lg:order-last rounded-3xl overflow-hidden relative shadow-2xl">
+              <img
+                src="/img/plat-003.webp"
+                alt="Dessert Bocante servi en bocal"
+                className="w-full h-72 lg:h-[420px] object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/60 to-transparent">
+                <div className="flex flex-wrap gap-2">
+                  {['Artisanal', 'Local', 'De saison', '100% maison'].map(badge => (
+                    <span key={badge}
+                          className="px-3 py-1 text-xs bg-white/20 backdrop-blur-sm border border-white/20 rounded-full text-white/90">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -215,7 +223,7 @@ export default function Accueil() {
             <Link to="/reservation" className="btn btn-white">
               Réserver en ligne
             </Link>
-            <a href="tel:+33490000000" className="btn btn-outline-white">
+            <a href="tel:+33432601770" className="btn btn-outline-white">
               📞 Appeler le restaurant
             </a>
           </div>

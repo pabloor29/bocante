@@ -25,8 +25,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <p className="font-heading text-2xl font-bold tracking-[0.08em] text-white mb-1">BOCANTE</p>
-            <p className="text-[0.7rem] tracking-[0.14em] uppercase text-white/40 mb-5">Restaurant du midi</p>
+            <img src="/logo.webp" alt="Bocante" className="h-16 w-16 rounded-xl object-cover mb-4" />
             <p className="text-sm leading-relaxed text-white/55 max-w-xs">
               Une cuisine 100&nbsp;% maison élaborée à partir de produits frais et de saison,
               servie en bocaux au cœur de L'Isle-sur-la-Sorgue.
@@ -83,9 +82,9 @@ export default function Footer() {
             <p className="text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-golden-500 mb-5">Contact</p>
             <ul className="space-y-4">
               {[
-                { icon: '📍', text: '12 Rue de la République\n84800 L\'Isle-sur-la-Sorgue' },
-                { icon: '📞', text: '+33 4 90 XX XX XX' },
-                { icon: '✉️', text: 'contact@bocante.fr' },
+                { icon: '📍', text: '130 Av. de la Petite Marine\n84800 L\'Isle-sur-la-Sorgue' },
+                { icon: '📞', text: '04 32 60 17 70' },
+                { icon: '✉️', text: 'bocante.commandes@gmail.com' },
               ].map(({ icon, text }) => (
                 <li key={icon} className="flex items-start gap-3 text-sm text-white/60">
                   <span className="mt-0.5 flex-shrink-0">{icon}</span>

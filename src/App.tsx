@@ -10,6 +10,7 @@ import AEmporter from './pages/AEmporter';
 import LeConcept from './pages/LeConcept';
 import Reservation from './pages/Reservation';
 import Contact from './pages/Contact';
+import GestionReservation from './pages/GestionReservation';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
               <Route path="/a-emporter"  element={<AEmporter />} />
               <Route path="/le-concept"  element={<LeConcept />} />
               <Route path="/reservation" element={<Reservation />} />
-              <Route path="/contact"     element={<Contact />} />
+              <Route path="/contact"           element={<Contact />} />
+              <Route path="/gestion-reservation" element={<GestionReservation />} />
             </Routes>
           </main>
           <Footer />

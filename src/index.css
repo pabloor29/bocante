@@ -113,12 +113,6 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Scroll indicator */
-@keyframes scrollBounce {
-  0%, 100% { transform: translateY(0); opacity: 0.5; }
-  50%       { transform: translateY(8px); opacity: 0.8; }
-}
-.scroll-indicator { animation: scrollBounce 2.5s ease infinite; }
 
 /* Mobile menu */
 @keyframes menuSlideDown {

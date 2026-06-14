@@ -20,6 +20,7 @@ interface FormData {
   telephone: string;
   heure: string;
   couverts: string;
+  allergie: string;
   message: string;
 }
 
@@ -54,9 +55,9 @@ const infoCards = [
         <p className="text-sm text-gray-500 mb-3 leading-relaxed">
           Vous préférez appeler ? Notre équipe est disponible aux heures d'ouverture.
         </p>
-        <a href="tel:+33490000000"
+        <a href="tel:+33432601770"
            className="font-heading text-xl font-bold text-forest-700 hover:text-forest-500 transition-colors">
-          +33 4 90 XX XX XX
+          04 32 60 17 70
         </a>
       </>
     ),
@@ -76,7 +77,7 @@ const infoCards = [
 export default function Reservation() {
   const [form, setForm] = useState<FormData>({
     prenom: '', nom: '', email: '', telephone: '',
-    heure: '12:30', couverts: '2', message: '',
+    heure: '12:30', couverts: '2', allergie: '', message: '',
   });
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -113,19 +114,16 @@ export default function Reservation() {
     if (!selectedDate) return;
 
     const templateParams = {
-      company: 'Bocante',
-      emailCompany: 'pab.ortg@gmail.com',
-      reservationType: 'EN ATTENTE DE CONFIRMATION',
-      reservationComment: "Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Veuillez noter que votre réservation ne sera confirmée qu'une fois que vous aurez reçu un mail de confirmation de notre part. Nous vous remercions pour votre patience et sommes impatients de vous accueillir !",
-      reservationComment2: ' ',
       prenom: form.prenom,
       nom: form.nom,
       email: form.email,
       telephone: form.telephone,
       couverts: form.couverts,
       heure: form.heure,
+      allergie: form.allergie,
       message: form.message,
       eventDate: selectedDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
+      reservationComment: "Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Veuillez noter que votre réservation ne sera confirmée qu'une fois que vous aurez reçu un mail de confirmation de notre part. Nous vous remercions pour votre patience et sommes impatients de vous accueillir !",
     };
 
     setLoading(true);
@@ -379,11 +377,19 @@ export default function Reservation() {
                       </div>
                     </div>
 
+                    <div className="mb-5">
+                      <label htmlFor="allergie" className="form-label">Allergie (optionnel)</label>
+                      <input id="allergie" name="allergie" type="text"
+                             value={form.allergie} onChange={handleChange}
+                             placeholder="Gluten, lactose, noix…"
+                             className="form-input" />
+                    </div>
+
                     <div className="mb-6">
                       <label htmlFor="message" className="form-label">Message (optionnel)</label>
                       <textarea id="message" name="message" rows={3}
                                 value={form.message} onChange={handleChange}
-                                placeholder="Allergies, occasion spéciale, demandes particulières…"
+                                placeholder="Occasion spéciale, demandes particulières…"
                                 className="form-input resize-none" />
                     </div>
 
@@ -404,36 +410,6 @@ export default function Reservation() {
                     </p>
                   </form>
 
-                  {process.env.NODE_ENV === 'development' && (
-                    <button
-                      onClick={() =>
-                        fetch('/api/send-email', {
-                          method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
-                          body: JSON.stringify({
-                            company: 'Bocante',
-                            emailCompany: 'pab.ortg@gmail.com',
-                            prenom: 'Test',
-                            nom: 'Bouton',
-                            email: 'pab.ortg@gmail.com',
-                            telephone: '0600000000',
-                            couverts: '2',
-                            heure: '12:30',
-                            message: 'Test depuis bouton',
-                            eventDate: 'vendredi 13 juin 2026',
-                            reservationComment: 'Ceci est un test.',
-                            reservationComment2: ' ',
-                          }),
-                        })
-                          .then((r) => r.json())
-                          .then((d) => alert(JSON.stringify(d)))
-                          .catch((e) => alert('Erreur : ' + e.message))
-                      }
-                      className="mt-4 w-full py-2 text-xs bg-amber-400 hover:bg-amber-500 text-white rounded-full font-semibold"
-                    >
-                      [DEV] Envoyer un mail de test
-                    </button>
-                  )}
                 </>
               )}
             </div>

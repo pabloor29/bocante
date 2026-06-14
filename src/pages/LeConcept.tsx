@@ -80,15 +80,17 @@ export default function LeConcept() {
               <Link to="/menu" className="btn btn-primary">Voir le menu de la semaine</Link>
             </div>
 
-            <div className="bg-gradient-to-br from-parchment-200 to-parchment-300 rounded-3xl p-12 flex flex-col items-center justify-center min-h-[420px] relative overflow-hidden">
-              <div className="absolute inset-0 pointer-events-none"
-                   style={{ background: 'radial-gradient(ellipse at center, rgba(61,122,90,0.08) 0%, transparent 70%)' }} />
-              <span className="text-9xl mb-6 leading-none filter drop-shadow-xl" role="img" aria-label="Un bocal Bocante">
-                🫙
-              </span>
-              <p className="font-heading text-lg italic text-forest-700 text-center max-w-xs relative">
-                "La bonne cuisine dans un bocal, c'est la liberté de manger comme on veut."
-              </p>
+            <div className="rounded-3xl overflow-hidden shadow-xl min-h-[420px] relative">
+              <img
+                src="/img/plat-002.webp"
+                alt="Plats Bocante servis en bocaux"
+                className="w-full h-full object-cover absolute inset-0"
+              />
+              <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-forest-900/80 to-transparent">
+                <p className="font-heading text-lg italic text-white text-center">
+                  "La bonne cuisine dans un bocal, c'est la liberté de manger comme on veut."
+                </p>
+              </div>
             </div>
           </div>
         </div>

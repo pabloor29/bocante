@@ -5,21 +5,60 @@ import { Helmet } from 'react-helmet-async';
 const steps = [
   {
     num: '1',
-    icon: '📞',
-    title: 'Passez commande',
-    desc: 'Appelez-nous avant 12h00 ou venez directement au comptoir. Commandez vos plats parmi le menu du jour.',
+    icon: '📲',
+    title: 'La story à 14h',
+    desc: 'Chaque jour à partir de 14h, on publie en story Instagram les plats restants du service à des prix réduits. Une sélection limitée, à saisir vite !',
   },
   {
     num: '2',
-    icon: '👨‍🍳',
-    title: 'On prépare votre repas',
-    desc: 'Vos plats sont cuisinés à la commande et conditionnés avec soin dans nos bocaux hermétiques.',
+    icon: '✉️',
+    title: 'Passez commande',
+    desc: 'Envoyez-nous un message à bocante.commandes@gmail.com ou appelez le 04 32 60 17 70. On confirme votre commande par retour.',
   },
   {
     num: '3',
     icon: '🛍️',
-    title: 'Récupérez votre commande',
-    desc: 'Venez récupérer votre commande à l\'heure convenue. Prêt en 20 minutes, sans attente.',
+    title: 'Récupérez ou faites livrer',
+    desc: 'Récupérez votre commande sur place avant 18h, ou faites-vous livrer sur L\'Isle-sur-la-Sorgue ou Le Thor (à partir de 30€ de commande). Paiement à la récupération.',
+  },
+];
+
+const infoCards = [
+  {
+    icon: '🚴',
+    title: 'Livraison à domicile',
+    content: (
+      <div className="space-y-3 text-sm text-gray-500 leading-relaxed">
+        <p>Nous livrons sur deux secteurs :</p>
+        <ul className="space-y-1">
+          <li className="flex items-center gap-2"><span className="text-forest-600 font-semibold">·</span> L'Isle-sur-la-Sorgue</li>
+          <li className="flex items-center gap-2"><span className="text-forest-600 font-semibold">·</span> Le Thor</li>
+        </ul>
+        <p className="pt-1">
+          <span className="font-semibold text-gray-700">Minimum de commande :</span> 30€
+        </p>
+        <p>
+          <span className="font-semibold text-gray-700">Paiement :</span> à la livraison ou au retrait (espèces ou CB)
+        </p>
+      </div>
+    ),
+  },
+  {
+    icon: '🫙',
+    title: 'Bocaux consignés',
+    content: (
+      <div className="space-y-3 text-sm text-gray-500 leading-relaxed">
+        <p>
+          Nos bocaux sont en verre de qualité supérieure — hermétiques, résistants et parfaits pour conserver vos plats.
+        </p>
+        <p>
+          Dans une démarche éco-responsable, ils sont <span className="font-semibold text-gray-700">consignés 2€</span> par bocal.
+        </p>
+        <p>
+          Ramenez vos bocaux vides lors de votre prochaine visite et récupérez votre consigne. Simple et écologique !
+        </p>
+      </div>
+    ),
   },
 ];
 
@@ -27,8 +66,8 @@ export default function AEmporter() {
   return (
     <>
       <Helmet>
-        <title>À emporter – Bocante | Cuisine maison L'Isle-sur-la-Sorgue</title>
-        <meta name="description" content="Commandez vos plats à emporter chez Bocante. Cuisine 100% maison servie en bocaux, prête en 20 minutes. Idéal pour manger au bureau ou en plein air à L'Isle-sur-la-Sorgue." />
+        <title>Bocaux To Go – Bocante | Plats à emporter L'Isle-sur-la-Sorgue</title>
+        <meta name="description" content="Bocaux To Go : chaque jour à 14h, Bocante publie ses plats restants en story Instagram à prix réduits. À récupérer sur place avant 18h ou livraison sur L'Isle-sur-la-Sorgue et Le Thor." />
         <link rel="canonical" href="https://bocante.fr/a-emporter" />
       </Helmet>
 
@@ -36,12 +75,11 @@ export default function AEmporter() {
       <header className="page-header page-header-golden">
         <div className="relative max-w-2xl mx-auto">
           <span className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-white/60 mb-3 block">
-            Pratique et savoureux
+            Chaque jour à partir de 14h
           </span>
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">À emporter</h1>
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">Bocaux To Go</h1>
           <p className="text-white/80 text-lg">
-            Dégustez Bocante où vous voulez. Nos bocaux voyagent bien — au bureau,
-            au bord de la Sorgue ou chez vous.
+            Les plats restants du service, à prix réduits — à emporter ou livrés chez vous.
           </p>
         </div>
       </header>
@@ -49,15 +87,26 @@ export default function AEmporter() {
       <div className="py-16 px-4 bg-white">
         <div className="max-w-site mx-auto">
 
+          {/* Concept banner */}
+          <div className="mb-20 rounded-2xl overflow-hidden bg-gradient-to-br from-golden-700 to-golden-600 p-8 md:p-12 text-white flex flex-col md:flex-row items-center gap-8">
+            <div className="text-6xl flex-shrink-0" role="img" aria-label="Instagram">📸</div>
+            <div>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">Suivez-nous sur Instagram</h2>
+              <p className="text-white/85 leading-relaxed max-w-xl">
+                Chaque jour à <strong className="text-white">14h</strong>, on publie en story nos plats du service à des tarifs préférentiels.
+                Les quantités sont limitées — pensez à activer les notifications pour ne pas manquer la story !
+              </p>
+            </div>
+          </div>
+
           {/* Steps */}
           <section className="mb-20" aria-labelledby="steps-title">
             <div className="text-center mb-12">
-              <span className="section-label">Comment ça marche ?</span>
-              <h2 id="steps-title" className="section-title mx-auto">Simple comme bonjour</h2>
+              <span className="section-label">Comment ça marche</span>
+              <h2 id="steps-title" className="section-title mx-auto">En 3 étapes</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-              {/* Connecting line (desktop) */}
               <div className="hidden md:block absolute top-7 left-[calc(16.66%+1.5rem)] right-[calc(16.66%+1.5rem)] h-0.5 bg-gradient-to-r from-forest-400 to-golden-500" />
 
               {steps.map(({ num, icon, title, desc }) => (
@@ -73,45 +122,9 @@ export default function AEmporter() {
             </div>
           </section>
 
-          {/* Info boxes */}
+          {/* Info cards */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16" aria-label="Informations pratiques">
-            {[
-              {
-                icon: '⏰',
-                title: 'Horaires de retrait',
-                content: (
-                  <ul className="space-y-2 text-sm">
-                    {[
-                      ['Mardi – Vendredi', '11h30 – 14h00'],
-                      ['Samedi', '11h30 – 14h00'],
-                      ['Lundi & Dimanche', null],
-                    ].map(([day, time]) => (
-                      <li key={String(day)} className="flex justify-between">
-                        <span className="text-gray-500">{day}</span>
-                        {time
-                          ? <span className="font-semibold text-forest-700">{time}</span>
-                          : <span className="text-gray-300 italic">Fermé</span>
-                        }
-                      </li>
-                    ))}
-                  </ul>
-                ),
-              },
-              {
-                icon: '📦',
-                title: 'Nos bocaux',
-                content: (
-                  <p className="text-sm text-gray-500 leading-relaxed">
-                    Tous nos plats sont conditionnés dans des bocaux en verre hermétiques.
-                    Ils se conservent 24h au réfrigérateur. Vous pouvez les réchauffer
-                    directement au bain-marie ou au four (sans le couvercle).
-                    <br /><br />
-                    <strong className="text-gray-700">Consigne bocaux :</strong> ramenez vos bocaux vides,
-                    on vous offre 10% sur la commande suivante !
-                  </p>
-                ),
-              },
-            ].map(({ icon, title, content }) => (
+            {infoCards.map(({ icon, title, content }) => (
               <div key={title} className="p-6 bg-parchment-100 border border-parchment-300 rounded-2xl">
                 <span className="text-3xl mb-3 block" role="img" aria-hidden="true">{icon}</span>
                 <h3 className="font-heading text-lg font-semibold text-gray-900 mb-4">{title}</h3>
@@ -120,20 +133,51 @@ export default function AEmporter() {
             ))}
           </section>
 
-          {/* CTA */}
-          <div className="text-center p-12 rounded-2xl text-white"
-               style={{ background: 'linear-gradient(135deg, #275038 0%, #3d7a5a 100%)' }}>
-            <span className="text-4xl mb-4 block" role="img" aria-label="Téléphone">📞</span>
-            <h2 className="font-heading text-3xl font-bold mb-2">Passez votre commande</h2>
-            <p className="text-white/70 mb-6">Appelez-nous avant 12h00 pour réserver vos plats à emporter</p>
-            <a href="tel:+33490000000"
-               className="font-heading text-2xl font-bold text-golden-500 hover:text-white transition-colors duration-200 block mb-8">
-              +33 4 90 XX XX XX
-            </a>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/menu" className="btn btn-secondary">Voir le menu du jour</Link>
+          {/* Retrait */}
+          <div className="mb-16 p-6 bg-forest-100 border border-forest-600/20 rounded-2xl flex items-start gap-4">
+            <span className="text-3xl flex-shrink-0" role="img" aria-hidden="true">🏠</span>
+            <div>
+              <h3 className="font-heading text-lg font-semibold text-gray-900 mb-1">Retrait sur place</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Vous préférez passer récupérer votre commande ? C'est possible jusqu'à <strong className="text-gray-700">18h</strong> chaque jour à notre adresse.
+                Le paiement s'effectue au moment du retrait, en espèces ou par CB.
+              </p>
             </div>
           </div>
+
+          {/* CTA */}
+          <div className="text-center p-10 md:p-14 rounded-2xl text-white"
+               style={{ background: 'linear-gradient(135deg, #275038 0%, #3d7a5a 100%)' }}>
+            <h2 className="font-heading text-3xl font-bold mb-2">Passez votre commande</h2>
+            <p className="text-white/70 mb-8 max-w-md mx-auto">
+              Après avoir vu la story, contactez-nous par mail ou par téléphone pour réserver vos plats.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+              <a href="mailto:bocante.commandes@gmail.com"
+                 className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-200 text-left">
+                <span className="text-2xl" role="img" aria-hidden="true">✉️</span>
+                <div>
+                  <p className="text-[0.65rem] tracking-widest uppercase text-white/50 mb-0.5">Par e-mail</p>
+                  <p className="font-semibold text-white text-sm">bocante.commandes@gmail.com</p>
+                </div>
+              </a>
+
+              <a href="tel:+33432601770"
+                 className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl px-6 py-4 transition-all duration-200 text-left">
+                <span className="text-2xl" role="img" aria-hidden="true">📞</span>
+                <div>
+                  <p className="text-[0.65rem] tracking-widest uppercase text-white/50 mb-0.5">Par téléphone</p>
+                  <p className="font-semibold text-white text-sm">04 32 60 17 70</p>
+                </div>
+              </a>
+            </div>
+
+            <Link to="/menu" className="btn btn-secondary">
+              Voir le menu de la semaine
+            </Link>
+          </div>
+
         </div>
       </div>
     </>

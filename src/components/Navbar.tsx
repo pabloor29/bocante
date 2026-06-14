@@ -45,13 +45,8 @@ export default function Navbar() {
       >
         <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex flex-col leading-none group" aria-label="Bocante – Accueil">
-            <span className={`font-heading text-xl font-bold tracking-[0.1em] transition-colors duration-300 ${solid ? 'text-forest-900' : 'text-white'}`}>
-              BOCANTE
-            </span>
-            <span className={`text-[0.6rem] tracking-[0.14em] uppercase transition-colors duration-300 ${solid ? 'text-gray-400' : 'text-white/60'}`}>
-              Restaurant du midi · L'Isle-sur-la-Sorgue
-            </span>
+          <Link to="/" className="flex-shrink-0" aria-label="Bocante – Accueil">
+            <img src="/logo-cut.webp" alt="Bocante" className="h-12 w-12 rounded-xl object-cover" />
           </Link>
 
           {/* Desktop links */}

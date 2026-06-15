@@ -26,7 +26,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const apiKey = process.env.RESEND_API_KEY!;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'noreply@resa-service.com';
   const restaurantEmail = process.env.RESTAURANT_CONTACT_EMAIL || 'pab.ortg@gmail.com';
-  const siteUrl = (process.env.SITE_URL || 'https://bocante.fr').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://bocante.fr').replace(/\/$/, '');
 
   const commentaire = [
     p.allergie ? `Allergie : ${p.allergie}` : '',

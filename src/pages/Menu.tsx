@@ -63,53 +63,11 @@ export default function Menu() {
             </p>
           </div>
 
-          {/* Formules */}
-          <section className="mb-14" aria-labelledby="formules-title">
-            {/* <span className="section-label">Nos formules</span> */}
+          {/* Formules — désactivées temporairement */}
+          {/* <section className="mb-14" aria-labelledby="formules-title">
             <h2 id="formules-title" className="section-title mb-8">La carte du jour</h2>
-
-            {loading ? (
-              <p className="text-sm text-gray-400 italic text-center py-8">Chargement…</p>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                {formules.map((f) => (
-                  <div
-                    key={f.id}
-                    className="rounded-2xl border-2 border-parchment-300 hover:border-forest-400 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl" role="img" aria-hidden="true">
-                          {COURSE_ICONS[f.nom] ?? '🍽️'}
-                        </span>
-                        <p className="font-heading font-semibold text-gray-900">{f.nom}</p>
-                      </div>
-                      <p className="font-heading text-2xl font-bold text-forest-700 flex-shrink-0">
-                        {f.prix.toFixed(0)}<span className="text-sm font-sans font-normal text-gray-400">€</span>
-                      </p>
-                    </div>
-
-                    {f.description && (
-                      <p className="text-xs text-gray-500 mb-3 leading-relaxed">{f.description}</p>
-                    )}
-
-                    <ul className="space-y-1.5 mt-auto">
-                      {f.elements.map((el, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                          <span className="mt-1.5 w-1 h-1 rounded-full bg-golden-500 flex-shrink-0" />
-                          {el}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <p className="text-xs text-gray-400 mt-4 text-center">
-              Boissons non comprises
-            </p>
-          </section>
+            ...
+          </section> */}
 
           {/* Menu du jour */}
           <section className="mb-12" aria-labelledby="menu-du-jour-title">

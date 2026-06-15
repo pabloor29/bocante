@@ -101,6 +101,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     </div>
   `;
 
+  if (!apiKey) {
+    console.error('RESEND_API_KEY is not set');
+    return res.status(500).json({ error: 'Missing RESEND_API_KEY' });
+  }
+
   try {
     await Promise.all([
       sendEmail(apiKey, {

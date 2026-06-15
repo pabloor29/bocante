@@ -1,11 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Resend } from 'resend';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const p = req.body as Record<string, string>;
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const apiKey = process.env.RESEND_API_KEY!;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'noreply@resa-service.com';
   const isConfirmed = p.reservationType === 'CONFIRMÉE';
 
@@ -48,18 +47,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   `;
 
   try {
-    const { error } = await resend.emails.send({
-      from: `Bocante <${fromEmail}>`,
-      to: p.email,
-      subject: isConfirmed
-        ? 'Votre réservation chez Bocante est confirmée ✅'
-        : 'Suite à votre demande de réservation chez Bocante',
-      html: clientHtml,
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `Bocante <${fromEmail}>`,
+        to: p.email,
+        subject: isConfirmed
+          ? 'Votre réservation chez Bocante est confirmée ✅'
+          : 'Suite à votre demande de réservation chez Bocante',
+        html: clientHtml,
+      }),
     });
 
-    if (error) {
-      console.error('Resend error:', error);
-      return res.status(500).json({ error: 'Resend error', details: error });
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error('Resend error:', data);
+      return res.status(500).json({ error: 'Resend error', details: data });
     }
 
     return res.status(200).json({ success: true });

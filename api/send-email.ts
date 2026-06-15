@@ -1,11 +1,29 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Resend } from 'resend';
+
+async function sendEmail(apiKey: string, payload: {
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
+}) {
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(JSON.stringify(data));
+  return data;
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const p = req.body as Record<string, string>;
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const apiKey = process.env.RESEND_API_KEY!;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'noreply@resa-service.com';
   const restaurantEmail = process.env.RESTAURANT_CONTACT_EMAIL || 'pab.ortg@gmail.com';
   const siteUrl = (process.env.SITE_URL || 'https://bocante.fr').replace(/\/$/, '');
@@ -84,25 +102,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   `;
 
   try {
-    const [r1, r2] = await Promise.all([
-      resend.emails.send({
+    await Promise.all([
+      sendEmail(apiKey, {
         from: `Bocante <${fromEmail}>`,
         to: restaurantEmail,
         subject: `Réservation – ${p.prenom} ${p.nom} – ${p.eventDate}`,
         html: restaurantHtml,
       }),
-      resend.emails.send({
+      sendEmail(apiKey, {
         from: `Bocante <${fromEmail}>`,
         to: p.email,
         subject: 'Votre demande de réservation chez Bocante',
         html: clientHtml,
       }),
     ]);
-
-    if (r1.error || r2.error) {
-      console.error('Resend error:', r1.error, r2.error);
-      return res.status(500).json({ error: 'Resend error', r1: r1.error, r2: r2.error });
-    }
 
     return res.status(200).json({ success: true });
   } catch (error) {

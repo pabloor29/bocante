@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bocante.fr/sitemap.xml
+Sitemap: https://bocante.com/sitemap.xml

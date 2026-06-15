@@ -35,7 +35,7 @@ export default function Contact() {
       <Helmet>
         <title>Contact – Bocante | Restaurant du midi L'Isle-sur-la-Sorgue</title>
         <meta name="description" content="Contactez Bocante, restaurant du midi à L'Isle-sur-la-Sorgue. Adresse, horaires et téléphone. Ouvert du mardi au samedi de 11h30 à 14h30." />
-        <link rel="canonical" href="https://bocante.fr/contact" />
+        <link rel="canonical" href="https://bocante.com/contact" />
       </Helmet>
 
       {/* Header */}

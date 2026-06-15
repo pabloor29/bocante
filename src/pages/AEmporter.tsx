@@ -68,7 +68,7 @@ export default function AEmporter() {
       <Helmet>
         <title>Bocaux To Go – Bocante | Plats à emporter L'Isle-sur-la-Sorgue</title>
         <meta name="description" content="Bocaux To Go : chaque jour à 14h, Bocante publie ses plats restants en story Instagram à prix réduits. À récupérer sur place avant 18h ou livraison sur L'Isle-sur-la-Sorgue et Le Thor." />
-        <link rel="canonical" href="https://bocante.fr/a-emporter" />
+        <link rel="canonical" href="https://bocante.com/a-emporter" />
       </Helmet>
 
       {/* Header */}

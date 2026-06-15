@@ -55,7 +55,7 @@ export default function Accueil() {
       <Helmet>
         <title>Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue | Cuisine maison en bocaux</title>
         <meta name="description" content="Bocante, restaurant du midi à L'Isle-sur-la-Sorgue : cuisine 100% maison, produits frais et de saison servis en bocaux. Sur place ou à emporter. Ouvert du mardi au samedi, 11h30–14h30." />
-        <link rel="canonical" href="https://bocante.fr/" />
+        <link rel="canonical" href="https://bocante.com/" />
       </Helmet>
 
       {/* HERO */}

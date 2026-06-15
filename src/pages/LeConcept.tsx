@@ -32,7 +32,7 @@ export default function LeConcept() {
       <Helmet>
         <title>Le Concept – Bocante | Cuisine artisanale en bocaux L'Isle-sur-la-Sorgue</title>
         <meta name="description" content="Bocante : une cuisine 100% maison servie dans des bocaux en verre au cœur de L'Isle-sur-la-Sorgue. Produits locaux, circuits courts, zéro plastique. Découvrez notre histoire et nos valeurs." />
-        <link rel="canonical" href="https://bocante.fr/le-concept" />
+        <link rel="canonical" href="https://bocante.com/le-concept" />
       </Helmet>
 
       {/* Header */}

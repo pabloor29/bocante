@@ -154,7 +154,7 @@ export default function Reservation() {
       <Helmet>
         <title>Réservation – Bocante | Restaurant du midi L'Isle-sur-la-Sorgue</title>
         <meta name="description" content="Réservez votre table chez Bocante à L'Isle-sur-la-Sorgue. Restaurant du midi ouvert du mardi au samedi de 11h30 à 14h30. Réservation en ligne rapide et gratuite." />
-        <link rel="canonical" href="https://bocante.fr/reservation" />
+        <link rel="canonical" href="https://bocante.com/reservation" />
       </Helmet>
 
       <style>{`

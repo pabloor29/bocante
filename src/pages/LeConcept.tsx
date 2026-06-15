@@ -73,11 +73,9 @@ export default function LeConcept() {
                 minutes. Sans compromis sur la qualité.
               </p>
               <p className="text-gray-500 leading-relaxed mb-8">
-                Depuis notre ouverture, nous allons chaque matin au marché de L'Isle-sur-la-Sorgue
-                pour sélectionner les meilleurs produits. Notre carte change chaque semaine, au
-                gré des saisons et des rencontres avec nos producteurs locaux.
+                Fidèles à notre engagement pour une cuisine de saison, nous sélectionnons chaque jour les meilleurs produits auprès de nos producteurs locaux. Au fil des récoltes et des arrivages, notre carte évolue quotidiennement pour vous offrir une expérience toujours renouvelée.
               </p>
-              <Link to="/menu" className="btn btn-primary">Voir le menu de la semaine</Link>
+              <Link to="/menu" className="btn btn-primary">Voir le menu</Link>
             </div>
 
             <div className="rounded-3xl overflow-hidden shadow-xl min-h-[420px] relative">

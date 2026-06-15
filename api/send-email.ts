@@ -28,11 +28,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const restaurantEmail = process.env.RESTAURANT_CONTACT_EMAIL || 'pab.ortg@gmail.com';
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://bocante.fr').replace(/\/$/, '');
 
-  const commentaire = [
-    p.allergie ? `Allergie : ${p.allergie}` : '',
-    p.message || '',
-  ].filter(Boolean).join(' — ');
-
   const gestionParams = new URLSearchParams({
     date: p.eventDate,
     heure: p.heure,
@@ -40,7 +35,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     nom: `${p.prenom} ${p.nom}`,
     email: p.email,
     telephone: p.telephone || '',
-    commentaire,
+    commentaire: p.message || '',
   });
   const gestionUrl = `${siteUrl}/gestion-reservation?${gestionParams.toString()}`;
 
@@ -54,7 +49,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         <tr><td style="padding:6px 0;color:#555"><strong>Date :</strong></td><td>${p.eventDate}</td></tr>
         <tr><td style="padding:6px 0;color:#555"><strong>Heure :</strong></td><td>${p.heure}</td></tr>
         <tr><td style="padding:6px 0;color:#555"><strong>Couverts :</strong></td><td>${p.couverts}</td></tr>
-        ${p.allergie ? `<tr><td style="padding:6px 0;color:#555"><strong>Allergie :</strong></td><td>${p.allergie}</td></tr>` : ''}
         <tr><td style="padding:6px 0;color:#555"><strong>Message :</strong></td><td>${p.message || '—'}</td></tr>
       </table>
       <div style="margin-top:24px">

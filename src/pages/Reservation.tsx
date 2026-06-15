@@ -20,7 +20,6 @@ interface FormData {
   telephone: string;
   heure: string;
   couverts: string;
-  allergie: string;
   message: string;
 }
 
@@ -77,7 +76,7 @@ const infoCards = [
 export default function Reservation() {
   const [form, setForm] = useState<FormData>({
     prenom: '', nom: '', email: '', telephone: '',
-    heure: '12:30', couverts: '2', allergie: '', message: '',
+    heure: '12:30', couverts: '2', message: '',
   });
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -120,7 +119,6 @@ export default function Reservation() {
       telephone: form.telephone,
       couverts: form.couverts,
       heure: form.heure,
-      allergie: form.allergie,
       message: form.message,
       eventDate: selectedDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
       reservationComment: "Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Veuillez noter que votre réservation ne sera confirmée qu'une fois que vous aurez reçu un mail de confirmation de notre part. Nous vous remercions pour votre patience et sommes impatients de vous accueillir !",
@@ -375,14 +373,6 @@ export default function Reservation() {
                           {timeSlots.map(h => <option key={h} value={h}>{h}</option>)}
                         </select>
                       </div>
-                    </div>
-
-                    <div className="mb-5">
-                      <label htmlFor="allergie" className="form-label">Allergie (optionnel)</label>
-                      <input id="allergie" name="allergie" type="text"
-                             value={form.allergie} onChange={handleChange}
-                             placeholder="Gluten, lactose, noix…"
-                             className="form-input" />
                     </div>
 
                     <div className="mb-6">

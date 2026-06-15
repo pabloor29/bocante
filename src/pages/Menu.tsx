@@ -25,6 +25,9 @@ export default function Menu() {
   const menuDuJour = categories.find((c) => c.name === 'Menu du jour');
   const menuImages = menuDuJour?.files.map((f) => getMenuFileUrl(f.file_path)) ?? [];
 
+  const menuDeLaSemaine = categories.find((c) => c.name === 'Menu de la semaine');
+  const menuSemaineImages = menuDeLaSemaine?.files.map((f) => getMenuFileUrl(f.file_path)) ?? [];
+
   return (
     <>
       <Helmet>
@@ -56,7 +59,7 @@ export default function Menu() {
           <div className="flex items-start gap-3 p-5 bg-forest-100 border-l-4 border-forest-600 rounded-r-xl mb-12">
             <span className="text-xl flex-shrink-0 mt-0.5" role="img" aria-hidden="true">🌿</span>
             <p className="text-sm text-forest-700 leading-relaxed">
-              <strong>Carte de saison</strong> — Notre menu change chaque semaine selon les arrivages et les produits de saison. N'hésitez pas à demander conseil à notre équipe pour découvrir les spécialités du moment !
+              <strong>Carte de saison</strong> — Notre menu change régulièrement selon les arrivages et les produits de saison. N'hésitez pas à demander conseil à notre équipe pour découvrir les spécialités du moment !
             </p>
           </div>
 
@@ -132,6 +135,28 @@ export default function Menu() {
               </p>
             )}
           </section>
+
+          {/* Menu de la semaine */}
+          {(loading || menuSemaineImages.length > 0) && (
+            <section className="mb-12" aria-labelledby="menu-semaine-title">
+              <h2 id="menu-semaine-title" className="section-title mb-8">Menu de la semaine</h2>
+
+              {loading ? (
+                <p className="text-sm text-gray-400 italic text-center py-8">Chargement du menu…</p>
+              ) : (
+                <div className="flex flex-col items-center gap-6">
+                  {menuSemaineImages.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`Menu de la semaine ${i + 1}`}
+                      className="w-full h-auto rounded-2xl shadow-md"
+                    />
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
 
           {/* Allergens */}
           {/* <aside className="p-5 bg-gray-50 rounded-xl text-sm text-gray-500 leading-relaxed border border-gray-200">

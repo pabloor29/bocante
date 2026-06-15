@@ -83,7 +83,7 @@ export default function Menu() {
                     key={i}
                     src={src}
                     alt={`Menu du jour ${i + 1}`}
-                    className="w-full h-auto rounded-2xl shadow-md"
+                    className="w-full md:w-2/3 lg:w-1/2 h-auto rounded-2xl shadow-md"
                   />
                 ))}
               </div>
@@ -102,7 +102,7 @@ export default function Menu() {
               {loading ? (
                 <p className="text-sm text-gray-400 italic text-center py-8">Chargement du menu…</p>
               ) : (
-                <div className="flex flex-col items-center gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
                   {menuSemaineImages.map((src, i) => (
                     <img
                       key={i}

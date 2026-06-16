@@ -7,7 +7,7 @@ const steps = [
     num: '1',
     icon: '📲',
     title: 'La story à 14h',
-    desc: 'Chaque jour à partir de 14h, on publie en story Instagram les plats restants du service à des prix réduits. Une sélection limitée, à saisir vite !',
+    desc: 'À partir de 14h, on publie en story Instagram les plats restants du service à des prix réduits. Une sélection limitée, à saisir vite !',
   },
   {
     num: '2',
@@ -74,9 +74,6 @@ export default function AEmporter() {
       {/* Header */}
       <header className="page-header page-header-golden">
         <div className="relative max-w-2xl mx-auto">
-          <span className="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-white/60 mb-3 block">
-            Chaque jour à partir de 14h
-          </span>
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">Bocaux To Go</h1>
           <p className="text-white/80 text-lg">
             Les plats restants du service, à prix réduits — à emporter ou livrés chez vous.
@@ -93,8 +90,7 @@ export default function AEmporter() {
             <div>
               <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">Suivez-nous sur Instagram</h2>
               <p className="text-white/85 leading-relaxed max-w-xl">
-                Chaque jour à <strong className="text-white">14h</strong>, on publie en story nos plats du service à des tarifs préférentiels.
-                Les quantités sont limitées — pensez à activer les notifications pour ne pas manquer la story !
+                Chaque jour, après le service de 14h, s'il nous reste des bocaux, nous proposons des lots à des prix très avantageux. Nous les annonçons en story, avec des quantités limitées. Pensez à activer les notifications pour être parmi les premiers informés !
               </p>
             </div>
           </div>

@@ -11,6 +11,7 @@ import LeConcept from './pages/LeConcept';
 import Reservation from './pages/Reservation';
 import Contact from './pages/Contact';
 import GestionReservation from './pages/GestionReservation';
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Footer />
         </div>
       </BrowserRouter>
+      <Analytics />
     </HelmetProvider>
   );
 }

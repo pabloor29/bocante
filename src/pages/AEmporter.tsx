@@ -26,10 +26,10 @@ const steps = [
 const infoCards = [
   {
     icon: '🚴',
-    title: 'Livraison à domicile',
+    title: 'Livraison sur site',
     content: (
       <div className="space-y-3 text-sm text-gray-500 leading-relaxed">
-        <p>Nous livrons sur deux secteurs :</p>
+        <p>Nous livrons sur les zones artizanales de :</p>
         <ul className="space-y-1">
           <li className="flex items-center gap-2"><span className="text-forest-600 font-semibold">·</span> L'Isle-sur-la-Sorgue</li>
           <li className="flex items-center gap-2"><span className="text-forest-600 font-semibold">·</span> Le Thor</li>
@@ -56,6 +56,9 @@ const infoCards = [
         </p>
         <p>
           Ramenez vos bocaux vides lors de votre prochaine visite et récupérez votre consigne. Simple et écologique !
+        </p>
+        <p>
+          nota si votre entreprise fait partie du CLUB ENTREPRISES les bocaux ne sont pas consignés - pensez à la faire référencer...
         </p>
       </div>
     ),

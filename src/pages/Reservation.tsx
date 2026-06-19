@@ -121,7 +121,7 @@ export default function Reservation() {
       heure: form.heure,
       message: form.message,
       eventDate: selectedDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
-      reservationComment: "Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Veuillez noter que votre réservation ne sera confirmée qu'une fois que vous aurez reçu un mail de confirmation de notre part. Nous vous remercions pour votre patience et sommes impatients de vous accueillir !",
+      eventDateISO: toLocalDateStr(selectedDate),
     };
 
     setLoading(true);

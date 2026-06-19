@@ -34,7 +34,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
-  const [restaurantResult, insertResult] = await Promise.all([
+  const [restaurantQuery, insertResult] = await Promise.all([
     supabase.from('restaurants').select('email').eq('id', restaurantId).single(),
     supabase.from('reservations').insert({
       restaurant_id: restaurantId,
@@ -54,7 +54,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: insertResult.error });
   }
 
-  const restaurantEmail = restaurantResult.data?.email ?? '';
+  const restaurantEmail = restaurantQuery.data?.email ?? '';
 
   const detailRows: [string, string][] = [
     ['Nom', fullName],

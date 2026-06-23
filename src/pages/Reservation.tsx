@@ -152,9 +152,13 @@ export default function Reservation() {
   return (
     <>
       <Helmet>
-        <title>Réservation – Bocante | Restaurant du midi L'Isle-sur-la-Sorgue</title>
-        <meta name="description" content="Réservez votre table chez Bocante à L'Isle-sur-la-Sorgue. Restaurant du midi ouvert du mardi au samedi de 11h30 à 14h30. Réservation en ligne rapide et gratuite." />
-        <link rel="canonical" href="https://bocante.com/reservation" />
+        <title>Réservation en ligne – Bocante | Restaurant du midi L'Isle-sur-la-Sorgue</title>
+        <meta name="description" content="Réservez votre table chez Bocante à L'Isle-sur-la-Sorgue, au bord de la Sorgue. Restaurant du midi ouvert du mardi au samedi, 11h30–14h30. Réservation en ligne rapide et gratuite." />
+        <link rel="canonical" href="https://www.bocante.com/reservation" />
+        <meta property="og:url" content="https://www.bocante.com/reservation" />
+        <meta property="og:title" content="Réserver une table – Bocante" />
+        <meta property="og:description" content="Réservation en ligne, restaurant du midi à L'Isle-sur-la-Sorgue." />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-002.webp" />
       </Helmet>
 
       <style>{`

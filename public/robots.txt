@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://www.bocante.com/sitemap.xml
+Host: https://www.bocante.com

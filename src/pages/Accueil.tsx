@@ -53,9 +53,13 @@ export default function Accueil() {
   return (
     <>
       <Helmet>
-        <title>Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue | Cuisine maison en bocaux</title>
-        <meta name="description" content="Bocante, restaurant du midi à L'Isle-sur-la-Sorgue : cuisine 100% maison, produits frais et de saison servis en bocaux. Sur place ou à emporter. Ouvert du mardi au samedi, 11h30–14h30." />
-        <link rel="canonical" href="https://bocante.com/" />
+        <title>Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue | Bord de la Sorgue, cuisine maison en bocaux</title>
+        <meta name="description" content="Restaurant du midi à L'Isle-sur-la-Sorgue, au bord de la Sorgue, en plein centre-ville. Cuisine 100% maison, produits frais et de saison servis en bocaux. Déjeuner abordable, sur place ou à emporter. Mardi au samedi, 11h30–14h30." />
+        <link rel="canonical" href="https://www.bocante.com/" />
+        <meta property="og:url" content="https://www.bocante.com/" />
+        <meta property="og:title" content="Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue" />
+        <meta property="og:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Déjeuner abordable, sur place ou à emporter." />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-001.webp" />
       </Helmet>
 
       {/* HERO */}

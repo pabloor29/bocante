@@ -31,9 +31,13 @@ export default function Menu() {
   return (
     <>
       <Helmet>
-        <title>Menu – Bocante | Restaurant du midi L'Isle-sur-la-Sorgue</title>
-        <meta name="description" content="Découvrez le menu de Bocante : entrées, plats et desserts 100% maison à base de produits frais et de saison. Formules déjeuner dès 17€. Carte renouvelée chaque semaine." />
-        <link rel="canonical" href="https://bocante.com/menu" />
+        <title>Menu & Carte – Bocante | Restaurant du midi L'Isle-sur-la-Sorgue</title>
+        <meta name="description" content="Menu Bocante à L'Isle-sur-la-Sorgue : entrées, plats et desserts 100% maison, produits frais et de saison servis en bocaux. Formules déjeuner abordables dès 17€, carte renouvelée chaque semaine selon le marché." />
+        <link rel="canonical" href="https://www.bocante.com/menu" />
+        <meta property="og:url" content="https://www.bocante.com/menu" />
+        <meta property="og:title" content="Menu Bocante – L'Isle-sur-la-Sorgue" />
+        <meta property="og:description" content="Entrées, plats et desserts 100% maison servis en bocaux. Carte renouvelée chaque semaine." />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-002.webp" />
       </Helmet>
 
       {/* Header */}

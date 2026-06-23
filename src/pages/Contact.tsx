@@ -33,9 +33,13 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact – Bocante | Restaurant du midi L'Isle-sur-la-Sorgue</title>
-        <meta name="description" content="Contactez Bocante, restaurant du midi à L'Isle-sur-la-Sorgue. Adresse, horaires et téléphone. Ouvert du mardi au samedi de 11h30 à 14h30." />
-        <link rel="canonical" href="https://bocante.com/contact" />
+        <title>Contact & Accès – Bocante | Restaurant L'Isle-sur-la-Sorgue, bord de la Sorgue</title>
+        <meta name="description" content="Contact Bocante, restaurant du midi à L'Isle-sur-la-Sorgue, 130 Av. de la Petite Marine, au bord de la Sorgue. Adresse, plan d'accès, horaires et téléphone. Mardi au samedi, 11h30–14h30." />
+        <link rel="canonical" href="https://www.bocante.com/contact" />
+        <meta property="og:url" content="https://www.bocante.com/contact" />
+        <meta property="og:title" content="Contact Bocante – L'Isle-sur-la-Sorgue" />
+        <meta property="og:description" content="Adresse, accès et horaires du restaurant Bocante à L'Isle-sur-la-Sorgue." />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-001.webp" />
       </Helmet>
 
       {/* Header */}

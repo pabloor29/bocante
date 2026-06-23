@@ -69,9 +69,13 @@ export default function AEmporter() {
   return (
     <>
       <Helmet>
-        <title>Bocaux To Go – Bocante | Plats à emporter L'Isle-sur-la-Sorgue</title>
-        <meta name="description" content="Bocaux To Go : chaque jour à 14h, Bocante publie ses plats restants en story Instagram à prix réduits. À récupérer sur place avant 18h ou livraison sur L'Isle-sur-la-Sorgue et Le Thor." />
-        <link rel="canonical" href="https://bocante.com/a-emporter" />
+        <title>À emporter & Bocaux To Go – Bocante | L'Isle-sur-la-Sorgue & Le Thor</title>
+        <meta name="description" content="Plats à emporter à L'Isle-sur-la-Sorgue : cuisine maison Bocante servie en bocaux. Bocaux To Go chaque jour à 14h en story Instagram à prix réduits, à récupérer avant 18h ou livraison sur L'Isle-sur-la-Sorgue et Le Thor." />
+        <link rel="canonical" href="https://www.bocante.com/a-emporter" />
+        <meta property="og:url" content="https://www.bocante.com/a-emporter" />
+        <meta property="og:title" content="À emporter – Bocante L'Isle-sur-la-Sorgue" />
+        <meta property="og:description" content="Plats maison à emporter en bocaux. Bocaux To Go à prix réduits chaque jour à 14h." />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-001.webp" />
       </Helmet>
 
       {/* Header */}

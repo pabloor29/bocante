@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Bocante",
+  "name": "Bocante – Restaurant L'Isle-sur-la-Sorgue",
+  "description": "Restaurant du midi à L'Isle-sur-la-Sorgue, cuisine 100% maison servie en bocaux.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +9,18 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "logo.webp",
+      "type": "image/webp",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait",
+  "theme_color": "#3D7A5A",
+  "background_color": "#faf7f2",
+  "lang": "fr-FR",
+  "categories": ["food", "lifestyle"]
 }

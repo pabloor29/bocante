@@ -53,21 +53,25 @@ export default function Accueil() {
   return (
     <>
       <Helmet>
-        <title>Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue | Bord de la Sorgue, cuisine maison en bocaux</title>
-        <meta name="description" content="Restaurant du midi à L'Isle-sur-la-Sorgue, au bord de la Sorgue, en plein centre-ville. Cuisine 100% maison, produits frais et de saison servis en bocaux. Déjeuner abordable, sur place ou à emporter. Mardi au samedi, 11h30–14h30." />
+        <title>Restaurant L'Isle-sur-la-Sorgue – Bocante, cuisine maison en bocaux</title>
+        <meta name="description" content="Bocante : restaurant du midi à L'Isle-sur-la-Sorgue (84), en centre-ville au bord de la Sorgue. Cuisine 100% maison servie en bocaux, produits frais du marché. Déjeuner abordable, sur place ou à emporter. Mardi–samedi 11h30–14h30. Réservation en ligne." />
         <link rel="canonical" href="https://www.bocante.com/" />
         <meta property="og:url" content="https://www.bocante.com/" />
-        <meta property="og:title" content="Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue" />
+        <meta property="og:title" content="Restaurant L'Isle-sur-la-Sorgue – Bocante, cuisine maison en bocaux" />
         <meta property="og:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Déjeuner abordable, sur place ou à emporter." />
         <meta property="og:image" content="https://www.bocante.com/img/plat-001.webp" />
+        <meta name="twitter:title" content="Restaurant L'Isle-sur-la-Sorgue – Bocante" />
+        <meta name="twitter:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Sur place ou à emporter." />
       </Helmet>
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <img
           src="/img/plat-001.webp"
-          alt=""
-          aria-hidden="true"
+          alt="Plat Bocante servi en bocal — restaurant L'Isle-sur-la-Sorgue"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-forest-900/75 via-forest-900/60 to-forest-900/80" />
@@ -80,6 +84,7 @@ export default function Accueil() {
           <h1 className="font-heading font-bold text-white tracking-[0.06em] leading-none mb-5"
               style={{ fontSize: 'clamp(3.5rem, 10vw, 7rem)' }}>
             BOCANTE
+            <span className="sr-only"> – Restaurant à L'Isle-sur-la-Sorgue, cuisine maison servie en bocaux</span>
           </h1>
 
           <p className="font-heading italic text-white/70 mb-8"

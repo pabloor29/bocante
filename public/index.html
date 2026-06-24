@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-FR">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/logo.webp" type="image/webp" />
@@ -7,24 +7,28 @@
     <meta name="theme-color" content="#3D7A5A" />
 
     <!-- SEO Primary -->
-    <title>Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue | Bord de la Sorgue, cuisine maison en bocaux</title>
-    <meta name="description" content="Bocante, restaurant du midi à L'Isle-sur-la-Sorgue, en plein centre-ville au bord de la Sorgue. Cuisine 100% maison, produits frais et de saison servis en bocaux. Déjeuner abordable, sur place ou à emporter. Ouvert du mardi au samedi, 11h30–14h30." />
-    <meta name="keywords" content="restaurant L'Isle-sur-la-Sorgue, restaurant bord de la Sorgue, restaurant centre-ville Isle-sur-la-Sorgue, restaurant pas cher Isle-sur-la-Sorgue, déjeuner L'Isle-sur-la-Sorgue, restaurant midi Vaucluse, cuisine maison, produits frais, à emporter, bocaux, restaurant Provence, cuisine de saison" />
+    <title>Restaurant L'Isle-sur-la-Sorgue – Bocante, cuisine maison en bocaux</title>
+    <meta name="description" content="Bocante : restaurant du midi à L'Isle-sur-la-Sorgue (84), en centre-ville au bord de la Sorgue. Cuisine 100% maison servie en bocaux, produits frais du marché. Déjeuner abordable, sur place ou à emporter. Mardi–samedi 11h30–14h30. Réservation en ligne." />
+    <meta name="keywords" content="restaurant L'Isle-sur-la-Sorgue, restaurant Isle sur la Sorgue, restaurant centre-ville Isle-sur-la-Sorgue, restaurant bord de la Sorgue, restaurant bord de l'eau Isle-sur-la-Sorgue, déjeuner L'Isle-sur-la-Sorgue, restaurant midi Vaucluse 84, cuisine maison Provence, restaurant produits frais marché, restaurant à emporter Isle-sur-la-Sorgue, bocaux, Bocante restaurant" />
     <meta name="author" content="Bocante" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <meta name="bingbot" content="index, follow" />
     <meta name="geo.region" content="FR-84" />
     <meta name="geo.placename" content="L'Isle-sur-la-Sorgue" />
     <meta name="geo.position" content="43.9216045;5.0265398" />
     <meta name="ICBM" content="43.9216045, 5.0265398" />
     <link rel="canonical" href="https://www.bocante.com/" />
+    <link rel="alternate" hreflang="fr-FR" href="https://www.bocante.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.bocante.com/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="restaurant.restaurant" />
     <meta property="og:url" content="https://www.bocante.com/" />
-    <meta property="og:title" content="Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue" />
+    <meta property="og:title" content="Restaurant L'Isle-sur-la-Sorgue – Bocante, cuisine maison en bocaux" />
     <meta property="og:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Déjeuner abordable, sur place ou à emporter à L'Isle-sur-la-Sorgue." />
     <meta property="og:image" content="https://www.bocante.com/img/plat-001.webp" />
-    <meta property="og:image:alt" content="Plat Bocante servi en bocal" />
+    <meta property="og:image:alt" content="Plat Bocante servi en bocal — restaurant L'Isle-sur-la-Sorgue" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="fr_FR" />
@@ -32,7 +36,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Bocante – Restaurant du midi à L'Isle-sur-la-Sorgue" />
+    <meta name="twitter:title" content="Restaurant L'Isle-sur-la-Sorgue – Bocante" />
     <meta name="twitter:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Sur place ou à emporter." />
     <meta name="twitter:image" content="https://www.bocante.com/img/plat-001.webp" />
     <meta name="twitter:image:alt" content="Plat Bocante servi en bocal" />
@@ -40,104 +44,15 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.webp" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
+    <!-- Preload hero image for LCP -->
+    <link rel="preload" as="image" href="%PUBLIC_URL%/img/plat-001.webp" fetchpriority="high" />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-    <!-- Schema.org – Restaurant -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "@id": "https://www.bocante.com/#restaurant",
-      "name": "Bocante",
-      "description": "Restaurant du midi à L'Isle-sur-la-Sorgue, au bord de la Sorgue, proposant une cuisine 100% maison à base de produits frais et de saison, servis en bocaux. Sur place ou à emporter.",
-      "url": "https://www.bocante.com/",
-      "telephone": "+33432601770",
-      "email": "bocante.commandes@gmail.com",
-      "image": [
-        "https://www.bocante.com/img/plat-001.webp",
-        "https://www.bocante.com/img/plat-002.webp",
-        "https://www.bocante.com/img/plat-003.webp"
-      ],
-      "logo": "https://www.bocante.com/logo.webp",
-      "sameAs": [
-        "https://www.facebook.com/BocanteRestaurant/",
-        "https://www.instagram.com/bocante_restaurant/"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "130 Av. de la Petite Marine",
-        "addressLocality": "L'Isle-sur-la-Sorgue",
-        "addressRegion": "Vaucluse",
-        "postalCode": "84800",
-        "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 43.9216045,
-        "longitude": 5.0265398
-      },
-      "areaServed": [
-        { "@type": "City", "name": "L'Isle-sur-la-Sorgue" },
-        { "@type": "City", "name": "Le Thor" }
-      ],
-      "servesCuisine": ["Française", "Provençale", "Cuisine du marché", "Cuisine de saison"],
-      "priceRange": "€€",
-      "currenciesAccepted": "EUR",
-      "paymentAccepted": "Cash, Credit Card",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "11:30",
-          "closes": "14:30"
-        }
-      ],
-      "menu": "https://www.bocante.com/menu",
-      "hasMenu": {
-        "@type": "Menu",
-        "url": "https://www.bocante.com/menu",
-        "name": "Menu Bocante"
-      },
-      "acceptsReservations": "True",
-      "takeout": true,
-      "dineIn": true,
-      "potentialAction": {
-        "@type": "ReserveAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://www.bocante.com/reservation",
-          "inLanguage": "fr-FR",
-          "actionPlatform": [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform"
-          ]
-        },
-        "result": {
-          "@type": "FoodEstablishmentReservation",
-          "name": "Réserver une table chez Bocante"
-        }
-      }
-    }
-    </script>
-
-    <!-- Schema.org – Website -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://www.bocante.com/#website",
-      "url": "https://www.bocante.com/",
-      "name": "Bocante",
-      "inLanguage": "fr-FR",
-      "publisher": { "@id": "https://www.bocante.com/#restaurant" }
-    }
-    </script>
   </head>
   <body>
-    <noscript>Vous devez activer JavaScript pour utiliser ce site.</noscript>
     <div id="root"></div>
   </body>
 </html>

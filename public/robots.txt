@@ -2,5 +2,11 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://www.bocante.com/sitemap.xml
 Host: https://www.bocante.com

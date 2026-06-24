@@ -99,16 +99,17 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.78rem] text-white/30">
           <p>© {new Date().getFullYear()} Bocante · L'Isle-sur-la-Sorgue</p>
           <a
-            href="https://portfolio-pablo-teal.vercel.app/"
+            href="https://resa-service.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white/60 transition-colors duration-200"
           >
-            Site réalisé par Pablo Ortega
+            Site réalisé par RESA
           </a>
-          <div className="flex gap-6">
-            <span className="hover:text-white/60 cursor-pointer transition-colors">Mentions légales</span>
-            <span className="hover:text-white/60 cursor-pointer transition-colors">Politique de confidentialité</span>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+            <Link to="/mentions-legales" className="hover:text-white/60 transition-colors">Mentions légales</Link>
+            <Link to="/confidentialite" className="hover:text-white/60 transition-colors">Politique de confidentialité</Link>
+            <Link to="/cgu" className="hover:text-white/60 transition-colors">CGU</Link>
           </div>
         </div>
       </div>

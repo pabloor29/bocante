@@ -32,27 +32,23 @@ const menuPreview = [
 const faq = [
   {
     q: "Où se trouve le restaurant Bocante à L'Isle-sur-la-Sorgue ?",
-    a: <>Bocante est situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, au bord de la Sorgue et à proximité du centre-ville. Retrouvez le plan d'accès sur notre <Link to="/contact" className="text-forest-600 font-medium hover:underline">page contact</Link>.</>,
+    a: <>Bocante est situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, à deux pas de la Sorgue et à proximité du centre-ville. Retrouvez le plan d'accès sur notre <Link to="/contact" className="text-forest-600 font-medium hover:underline">page contact</Link>.</>,
   },
   {
     q: "Le restaurant est-il au bord de l'eau ?",
-    a: <>Oui. Bocante se trouve directement au bord de la Sorgue, avenue de la Petite Marine, à quelques minutes à pied du centre-ville et des antiquaires de L'Isle-sur-la-Sorgue.</>,
+    a: <>Bocante se trouve avenue de la Petite Marine, à deux pas de la Sorgue et à quelques minutes à pied du centre-ville et des antiquaires de L'Isle-sur-la-Sorgue. Envie de déjeuner au bord de l'eau ? Emportez vos bocaux et installez-vous le long de la Sorgue.</>,
   },
   {
     q: "Quels sont les horaires d'ouverture de Bocante ?",
-    a: <>Le restaurant Bocante est ouvert du mardi au samedi, le midi de 11h30 à 14h30.</>,
+    a: <>Bocante est ouvert le midi, du mardi au samedi. Retrouvez les horaires à jour sur notre <Link to="/contact" className="text-forest-600 font-medium hover:underline">page contact</Link>.</>,
   },
   {
     q: 'Peut-on commander à emporter chez Bocante ?',
-    a: <>Oui, tous les plats Bocante peuvent être commandés à emporter dans nos bocaux en verre. Vous pouvez passer commande par téléphone au <a href="tel:+33432601770" className="text-forest-600 font-medium hover:underline">04 32 60 17 70</a> ou consulter notre page <Link to="/a-emporter" className="text-forest-600 font-medium hover:underline">à emporter</Link>.</>,
+    a: <>Oui, avec les Bocaux To Go : chaque jour après le service, les bocaux restants sont annoncés vers 14h en story Instagram. Commandez par téléphone au <a href="tel:+33432601770" className="text-forest-600 font-medium hover:underline">04 32 60 17 70</a> ou par e-mail, puis récupérez sur place avant 18h — livraison possible sur L'Isle-sur-la-Sorgue et Le Thor. Tout le fonctionnement sur la page <Link to="/a-emporter" className="text-forest-600 font-medium hover:underline">à emporter</Link>.</>,
   },
   {
     q: 'Faut-il réserver une table chez Bocante ?',
-    a: <>La réservation n'est pas obligatoire mais fortement recommandée, surtout le week-end. Vous pouvez <Link to="/reservation" className="text-forest-600 font-medium hover:underline">réserver en ligne</Link> ou appeler le 04 32 60 17 70.</>,
-  },
-  {
-    q: "Quel est le prix moyen d'un déjeuner chez Bocante ?",
-    a: <>Bocante propose un déjeuner abordable avec des formules dès 17 €, sans compromis sur la qualité — cuisine 100% maison à base de produits frais du marché. Découvrez <Link to="/menu" className="text-forest-600 font-medium hover:underline">le menu de la semaine</Link>.</>,
+    a: <>La réservation n'est pas obligatoire mais fortement recommandée pour déjeuner sans attente. Vous pouvez <Link to="/reservation" className="text-forest-600 font-medium hover:underline">réserver en ligne</Link> ou appeler le 04 32 60 17 70.</>,
   },
   {
     q: 'Peut-on venir en groupe chez Bocante ?',
@@ -86,15 +82,15 @@ export default function Accueil() {
   return (
     <>
       <Helmet>
-        <title>Restaurant au bord de l'eau à L'Isle-sur-la-Sorgue – Bocante</title>
-        <meta name="description" content="Restaurant du midi au bord de la Sorgue, à deux pas du centre-ville de L'Isle-sur-la-Sorgue. Cuisine 100% maison en bocaux, formules dès 17 €, produits frais du marché. Ouvert mardi–samedi 11h30–14h30. Sur place ou à emporter. Réservez en ligne en 30 secondes." />
+        <title>Restaurant à L'Isle-sur-la-Sorgue – Bocante | Formules dès 17 €</title>
+        <meta name="description" content="Restaurant du midi à deux pas de la Sorgue et du centre-ville de L'Isle-sur-la-Sorgue. Cuisine 100% maison en bocaux, formules dès 17 €, produits frais du marché. Ouvert mardi–samedi 11h30–14h30. Sur place ou à emporter. Réservez en ligne en 30 secondes." />
         <link rel="canonical" href="https://www.bocante.com/" />
         <meta property="og:url" content="https://www.bocante.com/" />
-        <meta property="og:title" content="Restaurant au bord de l'eau à L'Isle-sur-la-Sorgue – Bocante" />
-        <meta property="og:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Formules dès 17 €, sur place ou à emporter." />
+        <meta property="og:title" content="Restaurant à L'Isle-sur-la-Sorgue – Bocante | Formules dès 17 €" />
+        <meta property="og:description" content="Cuisine 100% maison servie en bocaux, à deux pas de la Sorgue. Formules dès 17 €, sur place ou à emporter." />
         <meta property="og:image" content="https://www.bocante.com/img/plat-001-og.jpg" />
-        <meta name="twitter:title" content="Restaurant au bord de l'eau à L'Isle-sur-la-Sorgue – Bocante" />
-        <meta name="twitter:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Formules dès 17 €. Sur place ou à emporter." />
+        <meta name="twitter:title" content="Restaurant à L'Isle-sur-la-Sorgue – Bocante | Formules dès 17 €" />
+        <meta name="twitter:description" content="Cuisine 100% maison servie en bocaux, à deux pas de la Sorgue. Formules dès 17 €. Sur place ou à emporter." />
         <meta name="twitter:image" content="https://www.bocante.com/img/plat-001-og.jpg" />
       </Helmet>
 
@@ -250,26 +246,26 @@ export default function Accueil() {
         </div>
       </section>
 
-      {/* LOCAL — bord de Sorgue */}
+      {/* LOCAL — la Sorgue à deux pas */}
       <section className="py-24 px-4 bg-white" aria-labelledby="local-title">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="section-label">Au bord de l'eau</span>
+          <span className="section-label">Au cœur de L'Isle-sur-la-Sorgue</span>
           <h2 id="local-title" className="section-title mx-auto">
-            Un déjeuner au bord <em className="text-forest-600 not-italic">de la Sorgue</em>
+            La Sorgue et le centre-ville <em className="text-forest-600 not-italic">à deux pas</em>
           </h2>
           <div className="w-12 h-[3px] bg-golden-600 rounded-full mx-auto mb-8" />
           <p className="text-gray-500 leading-relaxed mb-5">
-            Installé avenue de la Petite Marine, au bord de la Sorgue, Bocante est à quelques
+            Installé avenue de la Petite Marine, à deux pas de la Sorgue, Bocante est à quelques
             minutes à pied du centre-ville et des célèbres antiquaires de L'Isle-sur-la-Sorgue.
             Après une matinée au marché ou une balade le long de l'eau, faites une pause
             déjeuner simple et abordable : des <Link to="/menu" className="text-forest-600 font-medium hover:underline">formules dès 17 €</Link>,
             cuisinées maison chaque matin avec les produits du marché.
           </p>
           <p className="text-gray-500 leading-relaxed mb-8">
-            Sur place dans notre salle conviviale, ou <Link to="/a-emporter" className="text-forest-600 font-medium hover:underline">à emporter en bocaux</Link> pour
-            pique-niquer au fil de la Sorgue. Ouvert du mardi au samedi, de 11h30 à 14h30 —
-            pensez à <Link to="/reservation" className="text-forest-600 font-medium hover:underline">réserver votre table</Link>,
-            surtout le week-end.
+            Sur place dans notre salle conviviale, ou en <Link to="/a-emporter" className="text-forest-600 font-medium hover:underline">Bocaux To Go à emporter</Link> pour
+            pique-niquer au fil de la Sorgue. Ouvert du mardi au samedi le midi —
+            pensez à <Link to="/reservation" className="text-forest-600 font-medium hover:underline">réserver votre table</Link> pour
+            déjeuner sans attente.
           </p>
         </div>
       </section>

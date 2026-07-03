@@ -34,7 +34,7 @@ export default function Contact() {
     <>
       <Helmet>
         <title>Contact, horaires & accès – Bocante L'Isle-sur-la-Sorgue</title>
-        <meta name="description" content="Contact du restaurant Bocante à L'Isle-sur-la-Sorgue, 130 Av. de la Petite Marine, au bord de la Sorgue. Adresse, plan d'accès, horaires et téléphone. Ouvert mardi–samedi 11h30–14h30." />
+        <meta name="description" content="Contact du restaurant Bocante à L'Isle-sur-la-Sorgue, 130 Av. de la Petite Marine, à deux pas de la Sorgue. Adresse, plan d'accès, horaires et téléphone. Ouvert mardi–samedi 11h30–14h30." />
         <link rel="canonical" href="https://www.bocante.com/contact" />
         <meta property="og:url" content="https://www.bocante.com/contact" />
         <meta property="og:title" content="Contact, horaires & accès – Bocante L'Isle-sur-la-Sorgue" />

@@ -41,7 +41,7 @@ const RESTAURANT_LD = {
   name: 'Bocante',
   alternateName: "Bocante Restaurant L'Isle-sur-la-Sorgue",
   description:
-    "Restaurant du midi à L'Isle-sur-la-Sorgue, au bord de la Sorgue, proposant une cuisine 100% maison à base de produits frais et de saison, servis en bocaux. Sur place ou à emporter.",
+    "Restaurant du midi à L'Isle-sur-la-Sorgue, à deux pas de la Sorgue, proposant une cuisine 100% maison à base de produits frais et de saison, servis en bocaux. Sur place ou à emporter.",
   slogan: 'Cuisine maison servie en bocaux',
   url: `${ORIGIN}/`,
   telephone: '+33432601770',
@@ -169,7 +169,7 @@ const FAQ_LD = {
       name: "Où se trouve le restaurant Bocante à L'Isle-sur-la-Sorgue ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Bocante est situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, au bord de la Sorgue et à proximité du centre-ville.",
+        text: "Bocante est situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, à deux pas de la Sorgue et à proximité du centre-ville.",
       },
     },
     {
@@ -177,7 +177,7 @@ const FAQ_LD = {
       name: "Le restaurant est-il au bord de l'eau ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Oui. Bocante se trouve directement au bord de la Sorgue, avenue de la Petite Marine, à quelques minutes à pied du centre-ville et des antiquaires de L'Isle-sur-la-Sorgue.",
+        text: "Bocante se trouve avenue de la Petite Marine, à deux pas de la Sorgue et à quelques minutes à pied du centre-ville et des antiquaires de L'Isle-sur-la-Sorgue. Envie de déjeuner au bord de l'eau ? Emportez vos bocaux et installez-vous le long de la Sorgue.",
       },
     },
     {
@@ -185,7 +185,7 @@ const FAQ_LD = {
       name: "Quels sont les horaires d'ouverture de Bocante ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le restaurant Bocante est ouvert du mardi au samedi, le midi de 11h30 à 14h30.',
+        text: "Bocante est ouvert le midi, du mardi au samedi. Retrouvez les horaires à jour sur la page contact du site : bocante.com/contact.",
       },
     },
     {
@@ -193,7 +193,7 @@ const FAQ_LD = {
       name: 'Peut-on commander à emporter chez Bocante ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Oui, tous les plats Bocante peuvent être commandés à emporter dans nos bocaux en verre. Vous pouvez passer commande par téléphone au 04 32 60 17 70 ou en ligne.",
+        text: "Oui, avec les Bocaux To Go : chaque jour après le service, les bocaux restants sont annoncés vers 14h en story Instagram. Commandez par téléphone au 04 32 60 17 70 ou par e-mail, puis récupérez sur place avant 18h — livraison possible sur L'Isle-sur-la-Sorgue et Le Thor.",
       },
     },
     {
@@ -201,15 +201,7 @@ const FAQ_LD = {
       name: 'Faut-il réserver une table chez Bocante ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "La réservation n'est pas obligatoire mais fortement recommandée, surtout le week-end. Vous pouvez réserver directement sur bocante.com ou au 04 32 60 17 70.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: "Quel est le prix moyen d'un déjeuner chez Bocante ?",
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Bocante propose un déjeuner abordable avec des formules dès 17 €, sans compromis sur la qualité — cuisine 100% maison à base de produits frais du marché.',
+        text: "La réservation n'est pas obligatoire mais fortement recommandée pour déjeuner sans attente. Vous pouvez réserver directement sur bocante.com ou au 04 32 60 17 70.",
       },
     },
     {
@@ -225,15 +217,15 @@ const FAQ_LD = {
 
 const HOME_ROUTE = {
   path: '/',
-  title: "Restaurant au bord de l'eau à L'Isle-sur-la-Sorgue – Bocante",
+  title: "Restaurant à L'Isle-sur-la-Sorgue – Bocante | Formules dès 17 €",
   description:
-    "Restaurant du midi au bord de la Sorgue, à deux pas du centre-ville de L'Isle-sur-la-Sorgue. Cuisine 100% maison en bocaux, formules dès 17 €, produits frais du marché. Ouvert mardi–samedi 11h30–14h30. Sur place ou à emporter. Réservez en ligne en 30 secondes.",
+    "Restaurant du midi à deux pas de la Sorgue et du centre-ville de L'Isle-sur-la-Sorgue. Cuisine 100% maison en bocaux, formules dès 17 €, produits frais du marché. Ouvert mardi–samedi 11h30–14h30. Sur place ou à emporter. Réservez en ligne en 30 secondes.",
   image: '/img/plat-001-og.jpg',
   crumbs: null,
   isHome: true,
   noscriptH1: "Bocante – Restaurant à L'Isle-sur-la-Sorgue",
   noscriptBody:
-    "Restaurant du midi situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, au bord de la Sorgue. Cuisine 100% maison servie dans des bocaux en verre, à partir de produits frais et de saison du marché.",
+    "Restaurant du midi situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, à deux pas de la Sorgue. Cuisine 100% maison servie dans des bocaux en verre, à partir de produits frais et de saison du marché.",
 };
 
 const routes = [
@@ -269,7 +261,7 @@ const routes = [
     path: '/le-concept',
     title: "Le Concept Bocante – Cuisine en bocaux L'Isle-sur-la-Sorgue",
     description:
-      "Le concept Bocante : cuisine 100% maison servie dans des bocaux en verre au cœur de L'Isle-sur-la-Sorgue, au bord de la Sorgue. Produits locaux du marché, circuits courts, zéro plastique.",
+      "Le concept Bocante : cuisine 100% maison servie dans des bocaux en verre au cœur de L'Isle-sur-la-Sorgue, à deux pas de la Sorgue. Produits locaux du marché, circuits courts, zéro plastique.",
     image: '/img/plat-003-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
@@ -283,7 +275,7 @@ const routes = [
     path: '/reservation',
     title: "Réserver une table – Bocante L'Isle-sur-la-Sorgue (gratuit)",
     description:
-      "Réservez votre table en 30 secondes chez Bocante, restaurant au bord de la Sorgue à L'Isle-sur-la-Sorgue. Ouvert mardi–samedi midi, 11h30–14h30. Confirmation par e-mail, annulation libre jusqu'à 24 h avant.",
+      "Réservez votre table en 30 secondes chez Bocante, restaurant du midi à L'Isle-sur-la-Sorgue, à deux pas de la Sorgue. Ouvert mardi–samedi midi, 11h30–14h30. Confirmation par e-mail, annulation libre jusqu'à 24 h avant.",
     image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
@@ -297,7 +289,7 @@ const routes = [
     path: '/contact',
     title: "Contact, horaires & accès – Bocante L'Isle-sur-la-Sorgue",
     description:
-      "Contact du restaurant Bocante à L'Isle-sur-la-Sorgue, 130 Av. de la Petite Marine, au bord de la Sorgue. Adresse, plan d'accès, horaires et téléphone. Ouvert mardi–samedi 11h30–14h30.",
+      "Contact du restaurant Bocante à L'Isle-sur-la-Sorgue, 130 Av. de la Petite Marine, à deux pas de la Sorgue. Adresse, plan d'accès, horaires et téléphone. Ouvert mardi–samedi 11h30–14h30.",
     image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },

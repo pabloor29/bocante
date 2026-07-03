@@ -41,7 +41,7 @@ const RESTAURANT_LD = {
   name: 'Bocante',
   alternateName: "Bocante Restaurant L'Isle-sur-la-Sorgue",
   description:
-    "Restaurant du midi à L'Isle-sur-la-Sorgue, à deux pas de la Sorgue, proposant une cuisine 100% maison à base de produits frais et de saison, servis en bocaux. Sur place ou à emporter.",
+    "Restaurant du midi situé avenue de la Petite Marine, dans la zone commerciale de L'Isle-sur-la-Sorgue, proposant une cuisine 100% maison à base de produits frais et de saison, servis en bocaux. Sur place ou à emporter.",
   slogan: 'Cuisine maison servie en bocaux',
   url: `${ORIGIN}/`,
   telephone: '+33432601770',
@@ -83,14 +83,8 @@ const RESTAURANT_LD = {
   priceRange: '€€',
   currenciesAccepted: 'EUR',
   paymentAccepted: 'Cash, Credit Card',
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '11:30',
-      closes: '14:30',
-    },
-  ],
+  // openingHoursSpecification is injected at build time from Supabase
+  // (same source as the contact page) — see fetchOpeningHours() in main().
   menu: `${ORIGIN}/menu`,
   hasMenu: {
     '@type': 'Menu',
@@ -169,7 +163,7 @@ const FAQ_LD = {
       name: "Où se trouve le restaurant Bocante à L'Isle-sur-la-Sorgue ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Bocante est situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, à deux pas de la Sorgue et à proximité du centre-ville.",
+        text: "Bocante est situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, dans la zone commerciale de la ville. Retrouvez le plan d'accès sur la page contact du site.",
       },
     },
     {
@@ -177,7 +171,7 @@ const FAQ_LD = {
       name: "Le restaurant est-il au bord de l'eau ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Bocante se trouve avenue de la Petite Marine, à deux pas de la Sorgue et à quelques minutes à pied du centre-ville et des antiquaires de L'Isle-sur-la-Sorgue. Envie de déjeuner au bord de l'eau ? Emportez vos bocaux et installez-vous le long de la Sorgue.",
+        text: "Non, Bocante se trouve avenue de la Petite Marine, dans la zone commerciale de L'Isle-sur-la-Sorgue. Envie de déjeuner au bord de l'eau ? Emportez vos Bocaux To Go et installez-vous le long de la Sorgue.",
       },
     },
     {
@@ -185,7 +179,7 @@ const FAQ_LD = {
       name: "Quels sont les horaires d'ouverture de Bocante ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Bocante est ouvert le midi, du mardi au samedi. Retrouvez les horaires à jour sur la page contact du site : bocante.com/contact.",
+        text: "Bocante est un restaurant du midi. Retrouvez les jours et horaires d'ouverture à jour sur la page contact du site : bocante.com/contact.",
       },
     },
     {
@@ -219,13 +213,13 @@ const HOME_ROUTE = {
   path: '/',
   title: "Restaurant à L'Isle-sur-la-Sorgue – Bocante | Formules dès 17 €",
   description:
-    "Restaurant du midi à deux pas de la Sorgue et du centre-ville de L'Isle-sur-la-Sorgue. Cuisine 100% maison en bocaux, formules dès 17 €, produits frais du marché. Ouvert mardi–samedi 11h30–14h30. Sur place ou à emporter. Réservez en ligne en 30 secondes.",
+    "Restaurant du midi à L'Isle-sur-la-Sorgue (84), avenue de la Petite Marine. Cuisine 100% maison servie en bocaux, formules dès 17 €, produits frais du marché. Sur place ou à emporter. Réservez en ligne en 30 secondes.",
   image: '/img/plat-001-og.jpg',
   crumbs: null,
   isHome: true,
   noscriptH1: "Bocante – Restaurant à L'Isle-sur-la-Sorgue",
   noscriptBody:
-    "Restaurant du midi situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, à deux pas de la Sorgue. Cuisine 100% maison servie dans des bocaux en verre, à partir de produits frais et de saison du marché.",
+    "Restaurant du midi situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, dans la zone commerciale de la ville. Cuisine 100% maison servie dans des bocaux en verre, à partir de produits frais et de saison du marché.",
 };
 
 const routes = [
@@ -261,7 +255,7 @@ const routes = [
     path: '/le-concept',
     title: "Le Concept Bocante – Cuisine en bocaux L'Isle-sur-la-Sorgue",
     description:
-      "Le concept Bocante : cuisine 100% maison servie dans des bocaux en verre au cœur de L'Isle-sur-la-Sorgue, à deux pas de la Sorgue. Produits locaux du marché, circuits courts, zéro plastique.",
+      "Le concept Bocante : cuisine 100% maison servie dans des bocaux en verre à L'Isle-sur-la-Sorgue. Produits locaux du marché, circuits courts, zéro plastique.",
     image: '/img/plat-003-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
@@ -275,7 +269,7 @@ const routes = [
     path: '/reservation',
     title: "Réserver une table – Bocante L'Isle-sur-la-Sorgue (gratuit)",
     description:
-      "Réservez votre table en 30 secondes chez Bocante, restaurant du midi à L'Isle-sur-la-Sorgue, à deux pas de la Sorgue. Ouvert mardi–samedi midi, 11h30–14h30. Confirmation par e-mail, annulation libre jusqu'à 24 h avant.",
+      "Réservez votre table en 30 secondes chez Bocante, restaurant du midi à L'Isle-sur-la-Sorgue. Confirmation par e-mail, annulation libre jusqu'à 24 h avant.",
     image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
@@ -283,13 +277,13 @@ const routes = [
     ],
     noscriptH1: 'Réservation en ligne – Restaurant Bocante',
     noscriptBody:
-      "Réservez votre table chez Bocante à L'Isle-sur-la-Sorgue (mardi à samedi midi). Vous pouvez également appeler le 04 32 60 17 70.",
+      "Réservez votre table chez Bocante, restaurant du midi à L'Isle-sur-la-Sorgue. Vous pouvez également appeler le 04 32 60 17 70.",
   },
   {
     path: '/contact',
     title: "Contact, horaires & accès – Bocante L'Isle-sur-la-Sorgue",
     description:
-      "Contact du restaurant Bocante à L'Isle-sur-la-Sorgue, 130 Av. de la Petite Marine, à deux pas de la Sorgue. Adresse, plan d'accès, horaires et téléphone. Ouvert mardi–samedi 11h30–14h30.",
+      "Contact du restaurant Bocante à L'Isle-sur-la-Sorgue, 130 Av. de la Petite Marine, zone commerciale. Adresse, plan d'accès, horaires d'ouverture à jour et téléphone.",
     image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
@@ -297,7 +291,7 @@ const routes = [
     ],
     noscriptH1: "Contact – Restaurant Bocante L'Isle-sur-la-Sorgue",
     noscriptBody:
-      "130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue. Téléphone 04 32 60 17 70, e-mail bocante.commandes@gmail.com. Ouvert mardi à samedi, 11h30 – 14h30.",
+      "130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue. Téléphone 04 32 60 17 70, e-mail bocante.commandes@gmail.com. Horaires d'ouverture à jour sur cette page.",
   },
   {
     path: '/mentions-legales',
@@ -347,6 +341,56 @@ function ldScript(obj) {
   return `<script type="application/ld+json">${JSON.stringify(obj)}</script>`;
 }
 
+// Opening hours come from Supabase (same source as the contact page) so the
+// JSON-LD never drifts from the real schedule. hours[] is indexed Monday first,
+// matching DAYS_FR in src/lib/opening-hours.ts.
+const DAY_EN = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+function loadLocalEnv() {
+  const envPath = path.resolve(__dirname, '..', '.env.local');
+  if (!fs.existsSync(envPath)) return;
+  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
+    const m = line.match(/^([A-Z_][A-Z0-9_]*)=(.*)$/);
+    if (m && process.env[m[1]] === undefined) process.env[m[1]] = m[2].trim();
+  }
+}
+
+async function fetchOpeningHours() {
+  const url = process.env.REACT_APP_SUPABASE_URL;
+  const key = process.env.REACT_APP_SUPABASE_ANON_KEY;
+  const restaurantId = process.env.REACT_APP_RESTAURANT_ID;
+  if (!url || !key || !restaurantId) return null;
+  const res = await fetch(
+    `${url}/rest/v1/opening_hours?select=hours&restaurant_id=eq.${restaurantId}`,
+    { headers: { apikey: key, Authorization: `Bearer ${key}` } }
+  );
+  if (!res.ok) return null;
+  const rows = await res.json();
+  return (rows[0] && rows[0].hours) || null;
+}
+
+function openingHoursSpec(hours) {
+  const groups = new Map();
+  hours.forEach((d, i) => {
+    if (d.closedDay) return;
+    for (const service of ['midi', 'soir']) {
+      if (service === 'midi' && d.closedLunch) continue;
+      if (service === 'soir' && d.closedDiner) continue;
+      const t = d[service];
+      if (!t || !t.debut || !t.fin) continue;
+      const key = `${t.debut}-${t.fin}`;
+      if (!groups.has(key)) groups.set(key, { opens: t.debut, closes: t.fin, days: [] });
+      groups.get(key).days.push(DAY_EN[i]);
+    }
+  });
+  return [...groups.values()].map((g) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: g.days,
+    opens: g.opens,
+    closes: g.closes,
+  }));
+}
+
 function breadcrumbLd(crumbs) {
   return {
     '@context': 'https://schema.org',
@@ -377,7 +421,7 @@ function webPageLd(route) {
 }
 
 function noscriptBlock(route) {
-  return `<noscript><div style="font-family:system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px;color:#1c3a28"><h1>${escapeHtml(route.noscriptH1)}</h1><p>${escapeHtml(route.noscriptBody)}</p><p><strong>Bocante</strong> — 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue. Téléphone : <a href="tel:+33432601770">04 32 60 17 70</a>. Mardi à samedi, 11h30 – 14h30.</p><ul><li><a href="/">Accueil</a></li><li><a href="/menu">Menu</a></li><li><a href="/le-concept">Le Concept</a></li><li><a href="/a-emporter">À emporter</a></li><li><a href="/reservation">Réservation</a></li><li><a href="/contact">Contact</a></li></ul></div></noscript>`;
+  return `<noscript><div style="font-family:system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px;color:#1c3a28"><h1>${escapeHtml(route.noscriptH1)}</h1><p>${escapeHtml(route.noscriptBody)}</p><p><strong>Bocante</strong> — 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue. Téléphone : <a href="tel:+33432601770">04 32 60 17 70</a>. Horaires à jour sur la <a href="/contact">page contact</a>.</p><ul><li><a href="/">Accueil</a></li><li><a href="/menu">Menu</a></li><li><a href="/le-concept">Le Concept</a></li><li><a href="/a-emporter">À emporter</a></li><li><a href="/reservation">Réservation</a></li><li><a href="/contact">Contact</a></li></ul></div></noscript>`;
 }
 
 function transform(src, route) {
@@ -457,11 +501,26 @@ function transform(src, route) {
   return html;
 }
 
-function main() {
+async function main() {
   if (!fs.existsSync(SOURCE_HTML)) {
     console.error(`[prerender] ${SOURCE_HTML} not found. Run 'react-scripts build' first.`);
     process.exit(1);
   }
+
+  loadLocalEnv();
+  let hours = null;
+  try {
+    hours = await fetchOpeningHours();
+  } catch (e) {
+    console.warn(`[prerender] opening hours fetch failed: ${e.message}`);
+  }
+  if (hours) {
+    RESTAURANT_LD.openingHoursSpecification = openingHoursSpec(hours);
+    console.log('[prerender] ✓ opening hours injected from Supabase');
+  } else {
+    console.warn('[prerender] ⚠ opening hours unavailable — omitted from JSON-LD');
+  }
+
   const src = fs.readFileSync(SOURCE_HTML, 'utf8');
 
   const homeHtml = transform(src, HOME_ROUTE);
@@ -478,4 +537,7 @@ function main() {
   console.log(`[prerender] ✓ wrote ${count} HTML files (home + ${count - 1} routes)`);
 }
 
-main();
+main().catch((e) => {
+  console.error('[prerender] failed:', e);
+  process.exit(1);
+});

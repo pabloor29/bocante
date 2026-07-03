@@ -136,14 +136,14 @@ export default function Reservation() {
     <>
       <Helmet>
         <title>Réserver une table – Bocante L'Isle-sur-la-Sorgue (gratuit)</title>
-        <meta name="description" content="Réservez votre table en 30 secondes chez Bocante, restaurant du midi à L'Isle-sur-la-Sorgue, à deux pas de la Sorgue. Ouvert mardi–samedi midi, 11h30–14h30. Confirmation par e-mail, annulation libre jusqu'à 24 h avant." />
+        <meta name="description" content="Réservez votre table en 30 secondes chez Bocante, restaurant du midi à L'Isle-sur-la-Sorgue. Confirmation par e-mail, annulation libre jusqu'à 24 h avant." />
         <link rel="canonical" href="https://www.bocante.com/reservation" />
         <meta property="og:url" content="https://www.bocante.com/reservation" />
         <meta property="og:title" content="Réserver une table – Bocante L'Isle-sur-la-Sorgue" />
-        <meta property="og:description" content="Réservation en ligne gratuite, restaurant du midi à L'Isle-sur-la-Sorgue, à deux pas de la Sorgue." />
+        <meta property="og:description" content="Réservation en ligne gratuite, restaurant du midi à L'Isle-sur-la-Sorgue." />
         <meta property="og:image" content="https://www.bocante.com/img/plat-001-og.jpg" />
         <meta name="twitter:title" content="Réserver une table – Bocante L'Isle-sur-la-Sorgue" />
-        <meta name="twitter:description" content="Réservation en ligne gratuite. Ouvert mardi–samedi midi, 11h30–14h30." />
+        <meta name="twitter:description" content="Réservation en ligne gratuite au restaurant du midi Bocante, L'Isle-sur-la-Sorgue." />
       </Helmet>
 
       <style>{`

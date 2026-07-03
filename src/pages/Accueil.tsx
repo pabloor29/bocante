@@ -22,9 +22,42 @@ const features = [
 ];
 
 const menuPreview = [
-  { img: '/img/plat-002.webp', imgAlt: 'Entrée du jour',   tag: 'Entrée',  tagClass: 'bg-forest-100 text-forest-700' },
-  { img: '/img/plat-001.webp', imgAlt: 'Plat du jour',     tag: 'Plat',    tagClass: 'bg-golden-100 text-golden-700' },
-  { img: '/img/plat-003.webp', imgAlt: 'Dessert du jour',  tag: 'Dessert', tagClass: 'bg-rose-50 text-rose-600'      },
+  { img: '/img/plat-002.webp', imgAlt: "Entrée du jour en bocal – restaurant Bocante, L'Isle-sur-la-Sorgue",  tag: 'Entrée',  tagClass: 'bg-forest-100 text-forest-700' },
+  { img: '/img/plat-001.webp', imgAlt: "Plat du jour en bocal – cuisine maison Bocante, L'Isle-sur-la-Sorgue", tag: 'Plat',    tagClass: 'bg-golden-100 text-golden-700' },
+  { img: '/img/plat-003.webp', imgAlt: "Dessert du jour en bocal – restaurant Bocante, L'Isle-sur-la-Sorgue", tag: 'Dessert', tagClass: 'bg-rose-50 text-rose-600'      },
+];
+
+// Keep in sync with FAQ_LD in scripts/prerender-routes.js
+// (Google requires FAQPage markup to match content visible on the page).
+const faq = [
+  {
+    q: "Où se trouve le restaurant Bocante à L'Isle-sur-la-Sorgue ?",
+    a: <>Bocante est situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, au bord de la Sorgue et à proximité du centre-ville. Retrouvez le plan d'accès sur notre <Link to="/contact" className="text-forest-600 font-medium hover:underline">page contact</Link>.</>,
+  },
+  {
+    q: "Le restaurant est-il au bord de l'eau ?",
+    a: <>Oui. Bocante se trouve directement au bord de la Sorgue, avenue de la Petite Marine, à quelques minutes à pied du centre-ville et des antiquaires de L'Isle-sur-la-Sorgue.</>,
+  },
+  {
+    q: "Quels sont les horaires d'ouverture de Bocante ?",
+    a: <>Le restaurant Bocante est ouvert du mardi au samedi, le midi de 11h30 à 14h30.</>,
+  },
+  {
+    q: 'Peut-on commander à emporter chez Bocante ?',
+    a: <>Oui, tous les plats Bocante peuvent être commandés à emporter dans nos bocaux en verre. Vous pouvez passer commande par téléphone au <a href="tel:+33432601770" className="text-forest-600 font-medium hover:underline">04 32 60 17 70</a> ou consulter notre page <Link to="/a-emporter" className="text-forest-600 font-medium hover:underline">à emporter</Link>.</>,
+  },
+  {
+    q: 'Faut-il réserver une table chez Bocante ?',
+    a: <>La réservation n'est pas obligatoire mais fortement recommandée, surtout le week-end. Vous pouvez <Link to="/reservation" className="text-forest-600 font-medium hover:underline">réserver en ligne</Link> ou appeler le 04 32 60 17 70.</>,
+  },
+  {
+    q: "Quel est le prix moyen d'un déjeuner chez Bocante ?",
+    a: <>Bocante propose un déjeuner abordable avec des formules dès 17 €, sans compromis sur la qualité — cuisine 100% maison à base de produits frais du marché. Découvrez <Link to="/menu" className="text-forest-600 font-medium hover:underline">le menu de la semaine</Link>.</>,
+  },
+  {
+    q: 'Peut-on venir en groupe chez Bocante ?',
+    a: <>Oui. Pour les groupes de plus de 8 personnes ou pour un événement privatif, contactez-nous directement au 04 32 60 17 70 ou par e-mail à bocante.commandes@gmail.com.</>,
+  },
 ];
 
 function heroSchedule(hours: DayHours[]): { days: string; time: string } {
@@ -53,15 +86,16 @@ export default function Accueil() {
   return (
     <>
       <Helmet>
-        <title>Restaurant L'Isle-sur-la-Sorgue – Bocante, cuisine maison en bocaux</title>
-        <meta name="description" content="Bocante : restaurant du midi à L'Isle-sur-la-Sorgue (84), en centre-ville au bord de la Sorgue. Cuisine 100% maison servie en bocaux, produits frais du marché. Déjeuner abordable, sur place ou à emporter. Mardi–samedi 11h30–14h30. Réservation en ligne." />
+        <title>Restaurant au bord de l'eau à L'Isle-sur-la-Sorgue – Bocante</title>
+        <meta name="description" content="Restaurant du midi au bord de la Sorgue, à deux pas du centre-ville de L'Isle-sur-la-Sorgue. Cuisine 100% maison en bocaux, formules dès 17 €, produits frais du marché. Ouvert mardi–samedi 11h30–14h30. Sur place ou à emporter. Réservez en ligne en 30 secondes." />
         <link rel="canonical" href="https://www.bocante.com/" />
         <meta property="og:url" content="https://www.bocante.com/" />
-        <meta property="og:title" content="Restaurant L'Isle-sur-la-Sorgue – Bocante, cuisine maison en bocaux" />
-        <meta property="og:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Déjeuner abordable, sur place ou à emporter." />
-        <meta property="og:image" content="https://www.bocante.com/img/plat-001.webp" />
-        <meta name="twitter:title" content="Restaurant L'Isle-sur-la-Sorgue – Bocante" />
-        <meta name="twitter:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Sur place ou à emporter." />
+        <meta property="og:title" content="Restaurant au bord de l'eau à L'Isle-sur-la-Sorgue – Bocante" />
+        <meta property="og:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Formules dès 17 €, sur place ou à emporter." />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-001-og.jpg" />
+        <meta name="twitter:title" content="Restaurant au bord de l'eau à L'Isle-sur-la-Sorgue – Bocante" />
+        <meta name="twitter:description" content="Cuisine 100% maison servie en bocaux, au bord de la Sorgue. Formules dès 17 €. Sur place ou à emporter." />
+        <meta name="twitter:image" content="https://www.bocante.com/img/plat-001-og.jpg" />
       </Helmet>
 
       {/* HERO */}
@@ -212,6 +246,51 @@ export default function Accueil() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LOCAL — bord de Sorgue */}
+      <section className="py-24 px-4 bg-white" aria-labelledby="local-title">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="section-label">Au bord de l'eau</span>
+          <h2 id="local-title" className="section-title mx-auto">
+            Un déjeuner au bord <em className="text-forest-600 not-italic">de la Sorgue</em>
+          </h2>
+          <div className="w-12 h-[3px] bg-golden-600 rounded-full mx-auto mb-8" />
+          <p className="text-gray-500 leading-relaxed mb-5">
+            Installé avenue de la Petite Marine, au bord de la Sorgue, Bocante est à quelques
+            minutes à pied du centre-ville et des célèbres antiquaires de L'Isle-sur-la-Sorgue.
+            Après une matinée au marché ou une balade le long de l'eau, faites une pause
+            déjeuner simple et abordable : des <Link to="/menu" className="text-forest-600 font-medium hover:underline">formules dès 17 €</Link>,
+            cuisinées maison chaque matin avec les produits du marché.
+          </p>
+          <p className="text-gray-500 leading-relaxed mb-8">
+            Sur place dans notre salle conviviale, ou <Link to="/a-emporter" className="text-forest-600 font-medium hover:underline">à emporter en bocaux</Link> pour
+            pique-niquer au fil de la Sorgue. Ouvert du mardi au samedi, de 11h30 à 14h30 —
+            pensez à <Link to="/reservation" className="text-forest-600 font-medium hover:underline">réserver votre table</Link>,
+            surtout le week-end.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ — visible content matching the FAQPage JSON-LD */}
+      <section className="py-24 px-4 bg-parchment-100" aria-labelledby="faq-title">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="section-label">Questions fréquentes</span>
+            <h2 id="faq-title" className="section-title mx-auto">Tout savoir avant de venir</h2>
+          </div>
+          <div className="space-y-3">
+            {faq.map(({ q, a }) => (
+              <details key={q} className="group bg-white rounded-2xl shadow-sm border border-parchment-300 overflow-hidden">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 font-heading font-semibold text-gray-900 hover:text-forest-700 transition-colors">
+                  <span>{q}</span>
+                  <span className="flex-shrink-0 text-forest-600 transition-transform duration-200 group-open:rotate-45 text-xl leading-none" aria-hidden="true">+</span>
+                </summary>
+                <div className="px-6 pb-5 text-sm text-gray-500 leading-relaxed">{a}</div>
+              </details>
+            ))}
           </div>
         </div>
       </section>

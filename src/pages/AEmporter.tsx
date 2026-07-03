@@ -75,7 +75,7 @@ export default function AEmporter() {
         <meta property="og:url" content="https://www.bocante.com/a-emporter" />
         <meta property="og:title" content="À emporter – Bocante L'Isle-sur-la-Sorgue" />
         <meta property="og:description" content="Plats maison à emporter en bocaux. Bocaux To Go à prix réduits chaque jour à 14h." />
-        <meta property="og:image" content="https://www.bocante.com/img/plat-001.webp" />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-001-og.jpg" />
       </Helmet>
 
       {/* Header */}

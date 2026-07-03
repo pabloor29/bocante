@@ -36,7 +36,7 @@ export default function LeConcept() {
         <meta property="og:url" content="https://www.bocante.com/le-concept" />
         <meta property="og:title" content="Le Concept Bocante – Cuisine en bocaux" />
         <meta property="og:description" content="Cuisine 100% maison en bocaux, produits locaux, zéro plastique. L'Isle-sur-la-Sorgue." />
-        <meta property="og:image" content="https://www.bocante.com/img/plat-003.webp" />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-003-og.jpg" />
       </Helmet>
 
       {/* Header */}

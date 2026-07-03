@@ -158,6 +158,8 @@ const ORGANIZATION_LD = {
   ],
 };
 
+// Keep in sync with the visible FAQ rendered in src/pages/Accueil.tsx
+// (Google requires FAQPage markup to match content visible on the page).
 const FAQ_LD = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -168,6 +170,14 @@ const FAQ_LD = {
       acceptedAnswer: {
         '@type': 'Answer',
         text: "Bocante est situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, au bord de la Sorgue et à proximité du centre-ville.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "Le restaurant est-il au bord de l'eau ?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Oui. Bocante se trouve directement au bord de la Sorgue, avenue de la Petite Marine, à quelques minutes à pied du centre-ville et des antiquaires de L'Isle-sur-la-Sorgue.",
       },
     },
     {
@@ -202,15 +212,23 @@ const FAQ_LD = {
         text: 'Bocante propose un déjeuner abordable avec des formules dès 17 €, sans compromis sur la qualité — cuisine 100% maison à base de produits frais du marché.',
       },
     },
+    {
+      '@type': 'Question',
+      name: 'Peut-on venir en groupe chez Bocante ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui. Pour les groupes de plus de 8 personnes ou pour un événement privatif, contactez-nous directement au 04 32 60 17 70 ou par e-mail à bocante.commandes@gmail.com.',
+      },
+    },
   ],
 };
 
 const HOME_ROUTE = {
   path: '/',
-  title: "Restaurant L'Isle-sur-la-Sorgue – Bocante, cuisine maison en bocaux",
+  title: "Restaurant au bord de l'eau à L'Isle-sur-la-Sorgue – Bocante",
   description:
-    "Bocante : restaurant du midi à L'Isle-sur-la-Sorgue (84), en centre-ville au bord de la Sorgue. Cuisine 100% maison servie en bocaux, produits frais du marché. Déjeuner abordable, sur place ou à emporter. Mardi–samedi 11h30–14h30. Réservation en ligne.",
-  image: '/img/plat-001.webp',
+    "Restaurant du midi au bord de la Sorgue, à deux pas du centre-ville de L'Isle-sur-la-Sorgue. Cuisine 100% maison en bocaux, formules dès 17 €, produits frais du marché. Ouvert mardi–samedi 11h30–14h30. Sur place ou à emporter. Réservez en ligne en 30 secondes.",
+  image: '/img/plat-001-og.jpg',
   crumbs: null,
   isHome: true,
   noscriptH1: "Bocante – Restaurant à L'Isle-sur-la-Sorgue",
@@ -221,10 +239,10 @@ const HOME_ROUTE = {
 const routes = [
   {
     path: '/menu',
-    title: "Menu Bocante – Carte & formules midi L'Isle-sur-la-Sorgue",
+    title: "Menu & formules dès 17 € – Bocante, L'Isle-sur-la-Sorgue",
     description:
-      "Menu Bocante à L'Isle-sur-la-Sorgue : entrées, plats et desserts 100% maison servis en bocaux. Formules déjeuner dès 17 €, carte renouvelée chaque semaine selon le marché.",
-    image: '/img/plat-002.webp',
+      "Menu Bocante à L'Isle-sur-la-Sorgue : entrées, plats et desserts 100% maison servis en bocaux. Formules déjeuner dès 17 €, carte renouvelée chaque semaine selon le marché. Sur place ou à emporter.",
+    image: '/img/plat-002-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
       { name: 'Menu', url: '/menu' },
@@ -238,7 +256,7 @@ const routes = [
     title: "À emporter L'Isle-sur-la-Sorgue – Bocaux Bocante & livraison Le Thor",
     description:
       "Plats à emporter en bocaux à L'Isle-sur-la-Sorgue : cuisine maison Bocante, Bocaux To Go chaque jour à 14h à prix réduits, livraison sur L'Isle-sur-la-Sorgue et Le Thor dès 30 € de commande.",
-    image: '/img/plat-001.webp',
+    image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
       { name: 'À emporter', url: '/a-emporter' },
@@ -252,7 +270,7 @@ const routes = [
     title: "Le Concept Bocante – Cuisine en bocaux L'Isle-sur-la-Sorgue",
     description:
       "Le concept Bocante : cuisine 100% maison servie dans des bocaux en verre au cœur de L'Isle-sur-la-Sorgue, au bord de la Sorgue. Produits locaux du marché, circuits courts, zéro plastique.",
-    image: '/img/plat-003.webp',
+    image: '/img/plat-003-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
       { name: 'Le Concept', url: '/le-concept' },
@@ -263,10 +281,10 @@ const routes = [
   },
   {
     path: '/reservation',
-    title: "Réserver une table – Bocante L'Isle-sur-la-Sorgue (réservation en ligne)",
+    title: "Réserver une table – Bocante L'Isle-sur-la-Sorgue (gratuit)",
     description:
-      "Réservez votre table chez Bocante à L'Isle-sur-la-Sorgue, au bord de la Sorgue. Restaurant du midi ouvert mardi–samedi, 11h30–14h30. Réservation en ligne rapide et gratuite.",
-    image: '/img/plat-001.webp',
+      "Réservez votre table en 30 secondes chez Bocante, restaurant au bord de la Sorgue à L'Isle-sur-la-Sorgue. Ouvert mardi–samedi midi, 11h30–14h30. Confirmation par e-mail, annulation libre jusqu'à 24 h avant.",
+    image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
       { name: 'Réservation', url: '/reservation' },
@@ -277,10 +295,10 @@ const routes = [
   },
   {
     path: '/contact',
-    title: "Contact & Accès – Bocante L'Isle-sur-la-Sorgue, bord de la Sorgue",
+    title: "Contact, horaires & accès – Bocante L'Isle-sur-la-Sorgue",
     description:
-      "Contact du restaurant Bocante à L'Isle-sur-la-Sorgue, 130 Av. de la Petite Marine, au bord de la Sorgue. Adresse, plan d'accès, horaires et téléphone. Mardi–samedi 11h30–14h30.",
-    image: '/img/plat-001.webp',
+      "Contact du restaurant Bocante à L'Isle-sur-la-Sorgue, 130 Av. de la Petite Marine, au bord de la Sorgue. Adresse, plan d'accès, horaires et téléphone. Ouvert mardi–samedi 11h30–14h30.",
+    image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
       { name: 'Contact', url: '/contact' },
@@ -294,7 +312,7 @@ const routes = [
     title: "Mentions légales – Bocante L'Isle-sur-la-Sorgue",
     description:
       "Mentions légales du site Bocante, restaurant à L'Isle-sur-la-Sorgue : éditeur, hébergeur, propriété intellectuelle.",
-    image: '/img/plat-001.webp',
+    image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
       { name: 'Mentions légales', url: '/mentions-legales' },
@@ -308,7 +326,7 @@ const routes = [
     title: 'Politique de confidentialité – Bocante',
     description:
       "Politique de confidentialité du site Bocante : données personnelles collectées, finalités, durée de conservation, droits RGPD et contact.",
-    image: '/img/plat-001.webp',
+    image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
       { name: 'Politique de confidentialité', url: '/confidentialite' },
@@ -322,7 +340,7 @@ const routes = [
     title: "CGU – Conditions générales d'utilisation Bocante",
     description:
       "Conditions générales d'utilisation du site bocante.com : accès, services, réservations, responsabilités et droit applicable.",
-    image: '/img/plat-001.webp',
+    image: '/img/plat-001-og.jpg',
     crumbs: [
       { name: 'Accueil', url: '/' },
       { name: 'CGU', url: '/cgu' },
@@ -347,6 +365,22 @@ function breadcrumbLd(crumbs) {
       name: c.name,
       item: `${ORIGIN}${c.url}`,
     })),
+  };
+}
+
+function webPageLd(route) {
+  const url = `${ORIGIN}${route.path === '/' ? '/' : route.path}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name: route.title,
+    description: route.description,
+    inLanguage: 'fr-FR',
+    isPartOf: { '@id': `${ORIGIN}/#website` },
+    about: { '@id': `${ORIGIN}/#restaurant` },
+    primaryImageOfPage: `${ORIGIN}${route.image}`,
   };
 }
 
@@ -412,7 +446,12 @@ function transform(src, route) {
     );
   }
 
-  const ldBlocks = [ldScript(RESTAURANT_LD), ldScript(WEBSITE_LD), ldScript(ORGANIZATION_LD)];
+  const ldBlocks = [
+    ldScript(RESTAURANT_LD),
+    ldScript(WEBSITE_LD),
+    ldScript(ORGANIZATION_LD),
+    ldScript(webPageLd(route)),
+  ];
   if (route.isHome) {
     ldBlocks.push(ldScript(FAQ_LD));
   } else if (route.crumbs) {

@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.bocante.com/</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://www.bocante.com/menu</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://www.bocante.com/a-emporter</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://www.bocante.com/le-concept</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -52,31 +52,31 @@
   </url>
   <url>
     <loc>https://www.bocante.com/reservation</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.bocante.com/contact</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.bocante.com/mentions-legales</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.bocante.com/confidentialite</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.bocante.com/cgu</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

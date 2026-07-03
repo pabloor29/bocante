@@ -4,6 +4,7 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import { fr } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
 import { getReservationConfig, ReservationConfig } from '../lib/reservation';
+import { getOpeningHours, DAYS_FR, DayHours } from '../lib/opening-hours';
 
 registerLocale('fr', fr);
 
@@ -26,26 +27,6 @@ interface FormData {
 const FALLBACK_HOURS = ['11:30', '12:00', '12:30', '13:00', '13:30', '14:00'];
 
 const infoCards = [
-  // {
-  //   icon: '🕐',
-  //   title: 'Horaires du restaurant',
-  //   content: (
-  //     <ul className="space-y-2 text-sm">
-  //       {[
-  //         ['Mardi – Samedi', '11h30 – 14h30'],
-  //         ['Lundi & Dimanche', null],
-  //       ].map(([day, time]) => (
-  //         <li key={String(day)} className="flex justify-between gap-4">
-  //           <span className="text-gray-500">{day}</span>
-  //           {time
-  //             ? <span className="font-semibold text-forest-700">{time}</span>
-  //             : <span className="text-gray-300 italic">Fermé</span>
-  //           }
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   ),
-  // },
   {
     icon: '📞',
     title: 'Réserver par téléphone',
@@ -82,9 +63,11 @@ export default function Reservation() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [config, setConfig] = useState<ReservationConfig | null>(null);
+  const [hours, setHours] = useState<DayHours[] | null>(null);
 
   useEffect(() => {
     getReservationConfig().then(setConfig).catch(console.error);
+    getOpeningHours().then(setHours).catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -152,13 +135,15 @@ export default function Reservation() {
   return (
     <>
       <Helmet>
-        <title>Réservation en ligne – Bocante | Restaurant du midi L'Isle-sur-la-Sorgue</title>
-        <meta name="description" content="Réservez votre table chez Bocante à L'Isle-sur-la-Sorgue, au bord de la Sorgue. Restaurant du midi ouvert du mardi au samedi, 11h30–14h30. Réservation en ligne rapide et gratuite." />
+        <title>Réserver une table – Bocante L'Isle-sur-la-Sorgue (gratuit)</title>
+        <meta name="description" content="Réservez votre table en 30 secondes chez Bocante, restaurant au bord de la Sorgue à L'Isle-sur-la-Sorgue. Ouvert mardi–samedi midi, 11h30–14h30. Confirmation par e-mail, annulation libre jusqu'à 24 h avant." />
         <link rel="canonical" href="https://www.bocante.com/reservation" />
         <meta property="og:url" content="https://www.bocante.com/reservation" />
-        <meta property="og:title" content="Réserver une table – Bocante" />
-        <meta property="og:description" content="Réservation en ligne, restaurant du midi à L'Isle-sur-la-Sorgue." />
-        <meta property="og:image" content="https://www.bocante.com/img/plat-002.webp" />
+        <meta property="og:title" content="Réserver une table – Bocante L'Isle-sur-la-Sorgue" />
+        <meta property="og:description" content="Réservation en ligne gratuite, restaurant du midi au bord de la Sorgue à L'Isle-sur-la-Sorgue." />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-001-og.jpg" />
+        <meta name="twitter:title" content="Réserver une table – Bocante L'Isle-sur-la-Sorgue" />
+        <meta name="twitter:description" content="Réservation en ligne gratuite. Ouvert mardi–samedi midi, 11h30–14h30." />
       </Helmet>
 
       <style>{`
@@ -410,6 +395,30 @@ export default function Reservation() {
 
             {/* Sidebar */}
             <div className="flex flex-col gap-5">
+              {hours && (
+                <div className="bg-white rounded-2xl shadow-sm p-6">
+                  <span className="text-2xl mb-3 block" role="img" aria-hidden="true">🕐</span>
+                  <h3 className="font-heading font-semibold text-gray-900 mb-3">Horaires du restaurant</h3>
+                  <ul className="space-y-2 text-sm">
+                    {DAYS_FR.map((day, i) => {
+                      const d = hours[i];
+                      return (
+                        <li key={day} className="flex justify-between gap-4">
+                          <span className="text-gray-500">{day}</span>
+                          {d.closedDay || (d.closedLunch && d.closedDiner) ? (
+                            <span className="text-gray-300 italic">Fermé</span>
+                          ) : (
+                            <span className="font-semibold text-forest-700">
+                              {!d.closedLunch && d.midi.debut ? `${d.midi.debut} – ${d.midi.fin}` : ''}
+                              {!d.closedDiner && d.soir.debut ? ` ${d.soir.debut} – ${d.soir.fin}` : ''}
+                            </span>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
               {infoCards.map(({ icon, title, content }) => (
                 <div key={title} className="bg-white rounded-2xl shadow-sm p-6">
                   <span className="text-2xl mb-3 block" role="img" aria-hidden="true">{icon}</span>

@@ -31,13 +31,13 @@ export default function Menu() {
   return (
     <>
       <Helmet>
-        <title>Menu Bocante – Carte & formules midi L'Isle-sur-la-Sorgue</title>
+        <title>Menu & formules dès 17 € – Bocante, L'Isle-sur-la-Sorgue</title>
         <meta name="description" content="Menu Bocante à L'Isle-sur-la-Sorgue : entrées, plats et desserts 100% maison servis en bocaux. Formules déjeuner dès 17 €, carte renouvelée chaque semaine selon le marché. Sur place ou à emporter." />
         <link rel="canonical" href="https://www.bocante.com/menu" />
         <meta property="og:url" content="https://www.bocante.com/menu" />
-        <meta property="og:title" content="Menu & Carte Bocante – Restaurant L'Isle-sur-la-Sorgue" />
+        <meta property="og:title" content="Menu & formules dès 17 € – Bocante, L'Isle-sur-la-Sorgue" />
         <meta property="og:description" content="Entrées, plats, desserts 100% maison en bocaux. Formules dès 17 €. Carte renouvelée chaque semaine." />
-        <meta property="og:image" content="https://www.bocante.com/img/plat-002.webp" />
+        <meta property="og:image" content="https://www.bocante.com/img/plat-002-og.jpg" />
         <meta name="twitter:title" content="Menu Bocante – L'Isle-sur-la-Sorgue" />
         <meta name="twitter:description" content="Formules midi dès 17 €. Cuisine maison en bocaux, produits du marché." />
       </Helmet>
@@ -60,6 +60,13 @@ export default function Menu() {
 
       <div className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
+
+          {/* Intro — indexable text describing the menu */}
+          <p className="text-gray-500 leading-relaxed mb-8 text-center">
+            Entrées, plats et desserts 100&nbsp;% maison, servis en bocaux et cuisinés chaque matin
+            à partir des produits frais du marché de L'Isle-sur-la-Sorgue. Formules déjeuner
+            dès 17&nbsp;€, sur place ou <Link to="/a-emporter" className="text-forest-600 font-medium hover:underline">à emporter</Link>.
+          </p>
 
           {/* Seasonal note */}
           <div className="flex items-start gap-3 p-5 bg-forest-100 border-l-4 border-forest-600 rounded-r-xl mb-12">
@@ -88,7 +95,7 @@ export default function Menu() {
                   <img
                     key={i}
                     src={src}
-                    alt={`Menu du jour ${i + 1}`}
+                    alt={`Menu du jour du restaurant Bocante à L'Isle-sur-la-Sorgue – page ${i + 1}`}
                     className="w-full md:w-2/3 lg:w-1/2 h-auto rounded-2xl shadow-md"
                   />
                 ))}
@@ -113,7 +120,7 @@ export default function Menu() {
                     <img
                       key={i}
                       src={src}
-                      alt={`Menu de la semaine ${i + 1}`}
+                      alt={`Menu de la semaine du restaurant Bocante à L'Isle-sur-la-Sorgue – page ${i + 1}`}
                       className="w-full h-auto rounded-2xl shadow-md"
                     />
                   ))}

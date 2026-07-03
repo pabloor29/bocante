@@ -35,10 +35,6 @@ const faq = [
     a: <>Bocante est situé au 130 Avenue de la Petite Marine, 84800 L'Isle-sur-la-Sorgue, dans la zone commerciale de la ville. Retrouvez le plan d'accès sur notre <Link to="/contact" className="text-forest-600 font-medium hover:underline">page contact</Link>.</>,
   },
   {
-    q: "Le restaurant est-il au bord de l'eau ?",
-    a: <>Non, Bocante se trouve avenue de la Petite Marine, dans la zone commerciale de L'Isle-sur-la-Sorgue. Envie de déjeuner au bord de l'eau ? Emportez vos Bocaux To Go et installez-vous le long de la Sorgue.</>,
-  },
-  {
     q: "Quels sont les horaires d'ouverture de Bocante ?",
     a: <>Bocante est un restaurant du midi. Retrouvez les jours et horaires d'ouverture à jour sur notre <Link to="/contact" className="text-forest-600 font-medium hover:underline">page contact</Link>.</>,
   },

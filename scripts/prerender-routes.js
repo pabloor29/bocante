@@ -168,14 +168,6 @@ const FAQ_LD = {
     },
     {
       '@type': 'Question',
-      name: "Le restaurant est-il au bord de l'eau ?",
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Non, Bocante se trouve avenue de la Petite Marine, dans la zone commerciale de L'Isle-sur-la-Sorgue. Envie de déjeuner au bord de l'eau ? Emportez vos Bocaux To Go et installez-vous le long de la Sorgue.",
-      },
-    },
-    {
-      '@type': 'Question',
       name: "Quels sont les horaires d'ouverture de Bocante ?",
       acceptedAnswer: {
         '@type': 'Answer',
